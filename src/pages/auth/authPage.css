@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../../assets/img/fondo.jpg') center/cover no-repeat;
+    background-color: white;
 }
 
 .auth-background {
@@ -30,7 +30,7 @@
     height: auto;
     box-shadow: 10px 10px 10px #0b336b;
     padding: 25px;
-    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(90deg, rgba(89,180,58,1) 0%, rgba(253,29,29,1) 50%, rgba(252,213,69,1) 100%);
 }
 
 .auth-container>div {
