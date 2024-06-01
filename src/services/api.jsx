@@ -2,12 +2,7 @@ import axios from "axios";
 import { logout } from "../shared/hooks";
 
 const apiClient = axios.create({
-    baseURL: 'http://127.0.0.1:8080/hoteles/v1',
-    timeout: 5000
-})
-
-const api = axios.create({
-    baseURL: "http://127.0.0.1:8080/hoteles/v1/hotels",
+    baseURL: 'http://127.0.0.1:4000/quetzalito/v1/',
     timeout: 5000
 })
 
