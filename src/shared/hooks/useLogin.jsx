@@ -19,10 +19,8 @@ export const useLogin = () => {
             );
         }
 
-        const userDetails = response.data.account; // Obtener los detalles de la cuenta del usuario
-        console.log("User Details:", userDetails);
+        const userDetails = response.data.account;
 
-        // Guardar los detalles del usuario en localStorage
         localStorage.setItem('user', JSON.stringify(userDetails));
 
         const role = userDetails.role;
@@ -36,7 +34,7 @@ export const useLogin = () => {
                     break;
                 case "ADMIN_ROLE":
                     console.log("Role:", role);
-                    navigate('/admin');
+                    navigate('/');
                     break;
                 default:
                     console.log("Role:", role, 'default');
