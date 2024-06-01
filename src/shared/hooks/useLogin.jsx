@@ -2,11 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login as loginRequest } from "../../services/api";
 import toast from "react-hot-toast";
-import { getUserEmail as getUserEmailRequest } from "../../services/api";
 
 export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false);
-
     const navigate = useNavigate();
 
     const login = async (email, password) => {
@@ -21,21 +19,13 @@ export const useLogin = () => {
             );
         }
 
-        /*----------------Guardar Token ---------------------------- */
-        const { userDetails } = response.data;
+        const userDetails = response.data.account; // Obtener los detalles de la cuenta del usuario
+        console.log("User Details:", userDetails);
+
+        // Guardar los detalles del usuario en localStorage
         localStorage.setItem('user', JSON.stringify(userDetails));
 
-        /* ----------------------Guardar ID de Usuario -------------------*/ 
-        const userForRoleResponse = await getUserEmailRequest(email);
-        const { idUser } = userForRoleResponse.data;
-        console.log('Este es el id del usuario: ', idUser)
-        localStorage.setItem('IdUser', JSON.stringify(idUser));
-
-        if (userForRoleResponse.error) {
-            return toast.error('Error al obtener la información del usuario');
-        }
-
-        const { role } = userForRoleResponse.data;
+        const role = userDetails.role;
         console.log("Role:", role);
 
         if (role) {
