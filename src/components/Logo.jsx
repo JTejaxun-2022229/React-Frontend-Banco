@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import logo from '../assets/img/quetzal.jpg'
+import logo from '../assets/img/logoLogin.png'
 
 export const Logo = ({text}) => {
   return (

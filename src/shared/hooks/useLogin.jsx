@@ -10,39 +10,42 @@ export const useLogin = () => {
     const login = async (email, password) => {
         setIsLoading(true);
 
-        const response = await loginRequest({ email, password });
+        try {
+            const response = await loginRequest({ email, password });
+            setIsLoading(false);
 
-        setIsLoading(false);
-        if (response.error) {
-            return toast.error(
-                response.e?.response?.data || 'Ocurrió un error al iniciar sesión'
-            );
-        }
-
-        const userDetails = response.data.account;
-
-        localStorage.setItem('user', JSON.stringify(userDetails));
-
-        const role = userDetails.role;
-
-        if (role) {
-            switch (role) {
-                case "USER_ROLE":
-                    console.log("You have a role: ", role);
-                    navigate('/user');
-                    break;
-                case "ADMIN_ROLE":
-                    console.log("You have a role:", role);
-                    navigate('/admin');
-                    break;
-                default:
-                    console.log("You have a role:", role, 'default');
-                    navigate('/');
-                    break;
+            if (response.error) {
+                const errorMessage = response.e.response?.data?.msg || 'Ocurrió un error al iniciar sesión';
+                throw new Error(errorMessage);
             }
-        } else {
-            console.log("Role is undefined");
-            toast.error('No se encontró el rol del usuario');
+
+            const userDetails = response.data.account;
+            localStorage.setItem('user', JSON.stringify(userDetails));
+
+            const role = userDetails.role;
+
+            if (role) {
+                switch (role) {
+                    case "USER_ROLE":
+                        console.log("You have a role: ", role);
+                        navigate('/user');
+                        break;
+                    case "ADMIN_ROLE":
+                        console.log("You have a role:", role);
+                        navigate('/admin');
+                        break;
+                    default:
+                        console.log("You have a role:", role, 'default');
+                        navigate('/');
+                        break;
+                }
+            } else {
+                console.log("Role is undefined");
+                toast.error('No se encontró el rol del usuario');
+            }
+        } catch (error) {
+            setIsLoading(false);
+            toast.error(error.message);
         }
     };
 

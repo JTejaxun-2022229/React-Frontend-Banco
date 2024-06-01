@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserPage } from "./pages/userPage";
 import { AdminPage } from "./pages/adminPage";
 import { AuthPage } from "./pages/auth";
