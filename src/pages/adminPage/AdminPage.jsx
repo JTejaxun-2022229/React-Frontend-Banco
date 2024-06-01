@@ -7,7 +7,7 @@ import { useUserDetails } from "../../shared/hooks";
 
 import "./adminPage.css";
 
-export const DashboardPage = () => {
+export const AdminPage = () => {
   const { isLogged } = useUserDetails();
 
   useEffect(() => {

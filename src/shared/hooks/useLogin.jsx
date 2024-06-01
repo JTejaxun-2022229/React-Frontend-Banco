@@ -24,20 +24,19 @@ export const useLogin = () => {
         localStorage.setItem('user', JSON.stringify(userDetails));
 
         const role = userDetails.role;
-        console.log("Role:", role);
 
         if (role) {
             switch (role) {
                 case "USER_ROLE":
-                    console.log("Role:", role);
-                    navigate('/');
+                    console.log("You have a role: ", role);
+                    navigate('/user');
                     break;
                 case "ADMIN_ROLE":
-                    console.log("Role:", role);
-                    navigate('/');
+                    console.log("You have a role:", role);
+                    navigate('/admin');
                     break;
                 default:
-                    console.log("Role:", role, 'default');
+                    console.log("You have a role:", role, 'default');
                     navigate('/');
                     break;
             }

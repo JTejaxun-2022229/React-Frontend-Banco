@@ -5,9 +5,9 @@ import { useUserDetails } from "../../shared/hooks";
 
 
 
-import "./dashboardPage.css";
+import "./userPage.css";
 
-export const DashboardPage = () => {
+export const UserPage = () => {
   const { isLogged } = useUserDetails();
 
   useEffect(() => {
@@ -15,9 +15,9 @@ export const DashboardPage = () => {
   }, []);
 
   return (
-    <div className="dashboard-container">
+    <div className="user-container">
       <div className="Marco">
-        <h1>DASHBOARD USER</h1>
+        <h1>User Page</h1>
       </div>
     </div>
   );
