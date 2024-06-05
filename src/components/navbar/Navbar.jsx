@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Navbar.css';
 import Logo from '../../assets/img/Logo_Quetzalito_Principal-removebg.png'
 import { Link } from 'react-router-dom';
 

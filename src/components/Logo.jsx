@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import logo from '../assets/img/logoLogin.png'
+import logo from '../assets/img/Logo_Quetzalito_Principal-removebg.png'
 
 export const Logo = ({text}) => {
   return (

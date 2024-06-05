@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Logo } from "./Logo";
 import { Input } from "./Input";
 import {
   emailValidationMessage,
@@ -67,11 +66,10 @@ export const Login = ({ switchAuthHandler }) => {
   const isSubmitButtonDisabled = isLoading || !formState.password.isValid || !formState.email.isValid
   return (
     <div className="login-container">
-        <Logo text={'Login'}/>
         <form className="auth-form">
             <Input
                 field='email'
-                label='Email'
+                label='Email :'
                 value={formState.email.value}
                 onChangeHandler={handleInputValueChange}
                 type='text'
@@ -81,7 +79,7 @@ export const Login = ({ switchAuthHandler }) => {
             />
             <Input
                 field='password'
-                label='Password'
+                label='Password :'
                 value={formState.password.value}
                 onChangeHandler={handleInputValueChange}
                 type='password'
