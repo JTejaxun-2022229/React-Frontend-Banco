@@ -28,10 +28,12 @@ export const UserPage = () => {
                   <p>name</p>
                   <p>phone</p>
                 </div>
+                <hr />
+                <hr />
                 <div className="info-account">
-                    <h1>account:</h1>
-                    <h2>Ingreso: </h2>
-                    <h2>Balance: </h2>
+                  <h1>account: <span>4</span> </h1>
+                  <h2>Ingreso: <span>Q3</span></h2>
+                  <h2>Balance: <span>Q4</span></h2>
                 </div>
             </div>
             
