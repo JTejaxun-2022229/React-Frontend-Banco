@@ -17,6 +17,9 @@
 .user-container{
     padding: 10vh;
     display: flex;
+    background-color: rgba(83, 80, 80, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 10px 100px rgba(89, 180, 58, 1);
 }
 
 img{
@@ -28,6 +31,7 @@ img{
 .info-user{
     padding: 3vh;
     color: white;
+    text-align: center;
 }
 
 .info-account{
@@ -35,4 +39,5 @@ img{
     margin-top: 10vh;
     margin-right: 20%;
     color: rgba(89,180,58,1);
+    text-align: center;
 }
