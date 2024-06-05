@@ -8,11 +8,13 @@
     justify-content: center;
     /*align-items: center;*/
     background-color: white;
-    
+    background-image: url('../../../public/img/El_quetzalFondo.jpeg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .user-container{
-    border: 1px solid #020202;
     padding: 10vh;
     display: flex;
 }
@@ -25,10 +27,12 @@ img{
 
 .info-user{
     padding: 3vh;
+    color: white;
 }
 
 .info-account{
     position: absolute;
     margin-top: 10vh;
     margin-right: 20%;
+    color: rgba(89,180,58,1);
 }
