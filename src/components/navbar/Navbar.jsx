@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from '../../assets/img/Logo_Quetzalito_Principal-removebg.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('profile');
-        window.Location.href = '/';
+        localStorage.removeItem('user');
+        navigate('/')
     };
 
     return (

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
 import { Navbar } from "../../components/navbar/Navbar";
+import { Sidebar } from "../../components/navbar/Sidebar";
 
 import "./adminPage.css";
 
@@ -18,6 +19,7 @@ export const AdminPage = () => {
     <div className="dashboard-container">
       <div className="Marco">
         <Navbar/>
+        <Sidebar/>
       </div>
     </div>
   );

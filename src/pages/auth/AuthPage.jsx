@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Login } from "../../components/Login";
-import logo from "../../assets/img/logoBanco.png";
+import logo from "../../assets/img/Logo_Quetzalito_Principal-removebg.png";
 import './authPage.css';
 
 export const AuthPage = () => {
@@ -13,13 +13,6 @@ export const AuthPage = () => {
   return (
     <div className="background-auth-container">
       <div className="auth-container">
-      {/* Fondo de la imagen con transparencia */}
-      <div className="auth-logo-container">
-        <img src={logo}
-          width="100%"
-          height="100%"
-        />
-      </div>
       <div className="auth-form-container">
         <div className="title-form-login">
           <h1>Login</h1>
@@ -27,7 +20,9 @@ export const AuthPage = () => {
         <Login switchAuthHandler={handleAuthPageToggle} />
       </div>
     </div>
+    <div className="auth-logo-container">
+        <img src={logo}/>
+      </div>
     </div>
-
   );
 };
