@@ -4,6 +4,7 @@ const AdminSidebar = () => (
     <div className='button-sidebar-container'>
         <ul >
             <li>Creditos</li>
+            <li>Transfer</li>
             <li>Usuarios</li>
             <li>Settings</li>
         </ul>
@@ -14,6 +15,7 @@ const UserSidebar = () => (
     <div className='button-sidebar-container'>
         <ul>
             <li>Transaction</li>
+            <li>Transfer</li>
             <li>Credit</li>
             <li>Settings</li>
         </ul>
