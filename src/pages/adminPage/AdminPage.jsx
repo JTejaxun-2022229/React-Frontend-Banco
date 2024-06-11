@@ -1,25 +1,37 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Sidebar } from "../../components/navbar/Sidebar";
+import { UserPage } from "../userPage/UserPage"
 
 import "./adminPage.css";
 
 
 export const AdminPage = () => {
   const { isLogged } = useUserDetails();
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     (isLogged);
   }, []);
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    console.log('showForm:', showForm);
+  };
+
   return (
     <div className="dashboard-container">
       <div className="Marco">
-        <Navbar/>
+        <Navbar toggleForm={toggleForm} /> 
         <Sidebar/>
+        {showForm && (
+          <div className="user-container">
+            <UserPage />
+          </div>
+        )}
       </div>
     </div>
   );

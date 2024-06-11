@@ -174,3 +174,8 @@
     color: #fff;
     font-weight: bold;
 }
+
+.user-container{
+    margin-left: 10%;
+    height: 86vh;
+}
