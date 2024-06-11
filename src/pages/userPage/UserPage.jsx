@@ -22,7 +22,7 @@ export const UserPage = () => {
             </div>
             <div className="info-container">
                 <div className="info-user">
-                <img src="../../../public/img/usuario.png" alt="" />
+                <img src="../../../public/img/user.png" alt="" />
                   <h1>name </h1>
                   <p>email </p>
                   <p>name</p>
