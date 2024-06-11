@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
 import { Navbar } from "../../components/navbar/Navbar";
@@ -8,10 +8,16 @@ import "../adminPage/adminPage.css";
 
 
 export const TransferPage = () => {
-  const { isLogged } = useUserDetails();
+    const { isLogged } = useUserDetails();
+    /*const [date, setDate] = useState('');*/
 
-  useEffect(() => {
-    (isLogged);
+    useEffect(() => {
+      
+        /*fetch('/api/getDate')
+            .then(response => response.json())
+            .then(data => setDate(data.date));*/
+        
+        (isLogged);
   }, []);
 
   return (
@@ -35,10 +41,9 @@ export const TransferPage = () => {
             <label htmlFor="cantidad">Cantidad</label>
             <input type="number" id="cantidad" name="cantidad" />
           </div>
-          <div className="form-group">
-            <label htmlFor="fecha-envio">Fecha de Envío</label>
-            <input type="date" id="fecha-envio" name="fecha-envio" />
-          </div>
+           {/* <div className="form-group">
+            <p>Fecha de Envío: {fechaEnvio}</p>
+          </div> */}
           <div className="form-group">
             <label htmlFor="descripcion">Descripción</label>
             <textarea id="descripcion" name="descripcion"></textarea>
