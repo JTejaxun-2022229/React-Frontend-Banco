@@ -1,24 +1,6 @@
 import{ useEffect, useState } from 'react';
-
-const AdminSidebar = () => (
-    <div className='button-sidebar-container'>
-        <ul >
-            <li>Creditos</li>
-            <li>Usuarios</li>
-            <li>Settings</li>
-        </ul>
-    </div>
-);
-
-const UserSidebar = () => (
-    <div className='button-sidebar-container'>
-        <ul>
-            <li>Transaction</li>
-            <li>Credit</li>
-            <li>Settings</li>
-        </ul>
-    </div>
-);
+import { AdminSidebar } from '../form/AdminForm.jsx';
+import { UserSidebar } from '../form/UserForm.jsx';
 
 export const Sidebar = () => {
     const [role, setRole] = useState('');

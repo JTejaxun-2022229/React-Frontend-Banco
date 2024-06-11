@@ -23,26 +23,12 @@ export const useLogin = () => {
             localStorage.setItem('user', JSON.stringify(userDetails));
 
             const role = userDetails.role;
-
-            if (role) {
-                switch (role) {
-                    case "USER_ROLE":
-                        console.log("You have a role: ", role);
-                        navigate('/user');
-                        break;
-                    case "ADMIN_ROLE":
-                        console.log("You have a role:", role);
-                        navigate('/admin');
-                        break;
-                    default:
-                        console.log("You have a role:", role, 'default');
-                        navigate('/');
-                        break;
-                }
-            } else {
-                console.log("Role is undefined");
-                toast.error('No se encontró el rol del usuario');
+            if(!role){
+                throw new Error(errorMessage);
             }
+            
+            navigate("/dashboard");
+
         } catch (error) {
             setIsLoading(false);
             toast.error(error.message);

@@ -35,6 +35,12 @@
     margin: 0;
 }
 
+@media (max-width: 500px) {
+   .auth-container{
+    width: 100%;
+   }
+ }
+
 .auth-logo-container {
     position: fixed;
     bottom: 0;
@@ -91,6 +97,7 @@
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
+    color: white;
     margin: 2%;
     padding: 20px 45px 20px 20px;
 }
