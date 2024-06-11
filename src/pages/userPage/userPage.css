@@ -1,27 +1,17 @@
 .view-user-container{
-    border: 1px solid #020202;
-    border-radius: 3vh;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 105%;
     display: flex;
     justify-content: center;
-    /*align-items: center;*/
-    background-color: white;
-    background-image: url('../../../public/img/El_quetzalFondo.jpeg');
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 10vh;
 }
 
 .user-container{
-    padding: 10vh;
-    display: flex;
-    background-color: rgba(83, 80, 80, 0.5);
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 10px 100px rgba(89, 180, 58, 1);
-    overflow: auto;
+    margin: 10px;
 }
 
 img{
@@ -38,9 +28,7 @@ img{
 }
 
 .info-account{
-    position: absolute;
     margin-top: 10vh;
-    margin-right: 20%;
     color: #fff;
     text-align: center;
 }
