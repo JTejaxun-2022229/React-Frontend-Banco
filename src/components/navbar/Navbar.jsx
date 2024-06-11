@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Logo from '../../assets/img/Logo_Quetzalito_Principal-removebg.png'
 import { Link, useNavigate } from 'react-router-dom';
+//import PerfilAdmin from '../personalPerfil/PerfilAdmin.jsx'
 
 export const Navbar = () => {
 

@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import { LoadingSpinner } from "../../components/LoadingSpinner";
+import { Outlet } from "react-router-dom";
 import { useUserDetails } from "../../shared/hooks";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Sidebar } from "../../components/navbar/Sidebar";
-
 import "./adminPage.css";
-
 
 export const AdminPage = () => {
   const { isLogged } = useUserDetails();
@@ -18,8 +15,10 @@ export const AdminPage = () => {
   return (
     <div className="dashboard-container">
       <div className="Marco">
-        <Navbar/>
-        <Sidebar/>
+        <Sidebar />
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
