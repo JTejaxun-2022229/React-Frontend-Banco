@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Logo from '../../assets/img/Logo_Quetzalito_Principal-removebg.png'
+import User from '../../assets/img/User.png'
 import { Link, useNavigate } from 'react-router-dom';
 
-export const Navbar = () => {
+export const Navbar = ({ toggleForm }) => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const navigate = useNavigate();
+
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
@@ -33,6 +35,7 @@ export const Navbar = () => {
                 <Link to="/profile">Profile</Link>
                 <Link to="/settings">settings</Link>
                 <Link to="/help">help</Link>
+                <Link onClick={toggleForm}> User</Link>
                 <button className='sidebar-logout' onClick={handleLogout}>
                     Log out
                 </button>
