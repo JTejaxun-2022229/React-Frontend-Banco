@@ -7,12 +7,14 @@ import { useUserDetails } from "../../shared/hooks";
 
 import "./userPage.css";
 
-export const UserPage = () => {
+export const UserPage = ({userDetails}) => {
   const { isLogged } = useUserDetails();
 
   useEffect(() => {
     (isLogged);
   }, []);
+
+  console.log(userDetails, 'us')
 
   return (
     <div className="view-user-container">
@@ -23,7 +25,7 @@ export const UserPage = () => {
             <div className="info-container">
                 <div className="info-user">
                 <img src="../../../public/img/user.png" alt="" />
-                  <h1>name </h1>
+                  <h1>{userDetails.name}</h1>
                   <p>email </p>
                   <p>name</p>
                   <p>phone</p>

@@ -28,7 +28,8 @@ export const useLogin = () => {
                 switch (role) {
                     case "USER_ROLE":
                         console.log("You have a role: ", role);
-                        navigate('/user');
+                        console.log(userDetails)
+                        navigate('/user', { state: { userDetails } });
                         break;
                     case "ADMIN_ROLE":
                         console.log("You have a role:", role);

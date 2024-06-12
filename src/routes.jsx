@@ -4,7 +4,7 @@ import { AuthPage } from "./pages/auth";
 
 const routes = [
     { path: '/', element: <AuthPage /> },
-    { path: '/user', element: <UserPage /> },
+    { path: '/user', element: <AdminPage /> },   
     { path: '/admin', element: <AdminPage /> }, 
 ];
 
