@@ -22,9 +22,9 @@ export const AdminSidebarRight = () =>{
     return(
         <div className='input-sidebar-container'>
             <ul >
-                <li><input className="form-sidebar-button" type="button" value="Profile"/></li>
-                <li><input className="form-sidebar-button" type="button" value="Setting"/></li>
-                <li><input className="form-sidebar-button" type="button" value="Help"/></li>
+                <input className="form-sidebar-button" type="button" value="Profile"/>
+                <input className="form-sidebar-button" type="button" value="Setting"/>
+                <input className="form-sidebar-button" type="button" value="Help"/>
             </ul>
         </div>
     )

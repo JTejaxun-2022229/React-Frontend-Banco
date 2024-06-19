@@ -29,7 +29,6 @@ code {
  
 @media (prefers-color-scheme: light) {
   :root {
-    color: #ff6767;
     background-color: #ffffff;
   }
   button {

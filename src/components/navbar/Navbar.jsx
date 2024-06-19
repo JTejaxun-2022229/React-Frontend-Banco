@@ -1,5 +1,4 @@
 import { useState,useEffect } from 'react';
-import Logo from '../../assets/img/Logo_Quetzalito_Principal-removebg.png'
 import { useNavigate } from 'react-router-dom';
 import iconExit from "../../assets/img/IconExit.png"
 import { AdminSidebarRight } from '../form/AdminForm.jsx';
@@ -31,9 +30,6 @@ export const Navbar = () => {
 
     return (
         <nav className='navbar'>
-            <div className='navbar-logo'>
-                <span><img src={Logo} alt="" /></span>
-            </div>
             <div className="navbar-bars" onClick={toggleSidebar}>
                 <div></div>
                 <div></div>

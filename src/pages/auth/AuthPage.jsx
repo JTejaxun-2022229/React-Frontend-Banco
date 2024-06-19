@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Login } from "../../components/Login";
-import logo from "../../assets/img/Logo_Quetzalito_Principal-removebg.png";
+import logo from "../../assets/img/LogoQuetzalito_Principal.png";
 import './authPage.css';
 
 export const AuthPage = () => {
@@ -21,7 +21,7 @@ export const AuthPage = () => {
       </div>
     </div>
     <div className="auth-logo-container">
-        <img src={logo}/>
+        <img src={logo} />
       </div>
     </div>
   );

@@ -44,13 +44,13 @@
 .auth-logo-container {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 95%;
     background: transparent;
     padding: 10px 0;
 }
 
 .auth-logo-container img {
-    height: 100px;
+    height: 60px;
 }
 
 .title-form-login {
