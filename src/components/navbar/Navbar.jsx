@@ -8,7 +8,6 @@ export const Navbar = ({ toggleForm }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const navigate = useNavigate();
 
-
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
@@ -16,6 +15,10 @@ export const Navbar = ({ toggleForm }) => {
     const handleLogout = () => {
         localStorage.removeItem('user');
         navigate('/')
+    };
+
+    const handleUserClick = () => {
+        toggleForm();
     };
 
     return (
@@ -35,7 +38,7 @@ export const Navbar = ({ toggleForm }) => {
                 <Link to="/profile">Profile</Link>
                 <Link to="/settings">settings</Link>
                 <Link to="/help">help</Link>
-                <Link onClick={toggleForm}> User</Link>
+                <Link onClick={handleUserClick}>User</Link>
                 <button className='sidebar-logout' onClick={handleLogout}>
                     Log out
                 </button>
