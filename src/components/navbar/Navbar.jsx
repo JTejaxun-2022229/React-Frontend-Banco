@@ -27,9 +27,9 @@ export const Navbar = () => {
                 <div></div>
             </div>
             <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-                <button className="sidebar-close" onClick={toggleSidebar}>
+                {/* <button className="sidebar-close" onClick={toggleSidebar}>
                     &times;
-                </button>
+                </button> */}
                 <Link to="/profile">Profile</Link>
                 <Link to="/settings">settings</Link>
                 <Link to="/help">help</Link>
