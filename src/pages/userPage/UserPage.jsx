@@ -36,9 +36,9 @@ export const UserPage = () => {
                 <hr />
                 <hr />
                 <div className="info-account">
-                <h1>account: <span>{userDetails ? userDetails.account : ''}</span> </h1>
-                <h2>Ingreso: <span>Q{userDetails ? userDetails.salary : ''}</span></h2>
-                <h2>Balance: <span>Q{userDetails ? userDetails.balance : ''}</span></h2>
+                <p>account: <span>{userDetails ? userDetails.account : ''}</span> </p>
+                <p>Ingreso: <span>Q{userDetails ? userDetails.salary : ''}</span></p>
+                <p>Balance: <span>Q{userDetails ? userDetails.balance : ''}</span></p>
                 </div>
             </div>
             

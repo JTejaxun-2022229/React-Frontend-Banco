@@ -178,4 +178,5 @@
 .user-container{
     margin-left: 10%;
     height: 86vh;
+    z-index: 9999;
 }
