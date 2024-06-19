@@ -14,21 +14,32 @@ import "./adminPage.css";
 export const AdminPage = () => {
   const { isLogged } = useUserDetails();
   const [showForm, setShowForm] = useState(false);
+  
+  const location = useLocation();
+  const { state } = location;
+  const userDetails = state && state.userDetails;
 
   useEffect(() => {
-    (isLogged);
-  }, []);
+    if (userDetails) {
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+  }, [userDetails]);
+
+  useEffect(() => {
+    console.log('usuario es:', userDetails);
+  }, [userDetails]);
+
 
   const toggleForm = () => {
     setShowForm(!showForm);
     console.log('showForm:', showForm);
   };
 
-  const location = useLocation();
-  const { state } = location;
-  const userDetails = state && state.userDetails;
-
-  console.log('usuario es: ',userDetails)
+  useEffect(() => {
+    if (userDetails) {
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+  }, [userDetails]);
 
   return (
     <div className="dashboard-container">
@@ -37,7 +48,7 @@ export const AdminPage = () => {
         <Sidebar/>
         {showForm && (
           <div className="user-container">
-            <UserPage userDetails={userDetails}/>
+            <UserPage/>
           </div>
         )}
       </div>
