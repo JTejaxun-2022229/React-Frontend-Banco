@@ -1,22 +1,33 @@
-import iconCredit from "../../assets/img/IconCredit.png"
-import iconTransaction from "../../assets/img/IconTransaction.png"
-import iconUserList from "../../assets/img/IconUSerList.png"
-/**Retorna el Formaulario de Administrador que se mostrara en el sideabr izquierdo 
-    Agregar opciones segun necesite 
-    *Seguir la estructura
-*/
+import { NavLink } from 'react-router-dom';
+import iconClients from "../../assets/img/ClientsIcon.png"
+import iconCreateClient from "../../assets/img/CreateClient.png"
+import iconCreateAdmin from "../../assets/img/CreateAdmin.png"
+import iconProductList from "../../assets/img/Product.png"
 
 export const AdminSidebar = () => {
     return (
         <div className='button-sidebar-container'>
-            <ul >
-                <li><img src={iconCredit} alt="iconCredit" /><a>Credit</a></li>
-                <li><img src={iconTransaction} alt="iconTransfer" /><a>Transaction</a></li>
-                <li><img src={iconUserList} alt="iconUserList" /><a>Users</a></li>
+            <ul>
+                <li>
+                    <img src={iconClients} alt="iconClients" />
+                    <NavLink to="/dashboard/clients">Clients</NavLink>
+                </li>
+                <li>
+                    <img src={iconCreateClient} alt="iconCreateClient" />
+                    <NavLink to="/dashboard/create-client">Create Client</NavLink>
+                </li>
+                <li>
+                    <img src={iconCreateAdmin} alt="iconCreateAdmin" />
+                    <NavLink to="/dashboard/create-admin">Create Admin</NavLink>
+                </li>
+                <li>
+                    <img src={iconProductList} alt="iconProductList" />
+                    <NavLink to="/dashboard/products">Products</NavLink>
+                </li>
             </ul>
         </div>
-    )
-}
+    );
+};
 
 export const AdminSidebarRight = () =>{
     return(

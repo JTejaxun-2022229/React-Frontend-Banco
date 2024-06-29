@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
+// DashboardPage.jsx
 import { useEffect } from "react";
-import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
-import { Navbar } from "../../components/navbar/Navbar";
 import { Sidebar } from "../../components/navbar/Sidebar";
-import { Content } from "../../components/content/Content";
+import { Outlet } from 'react-router-dom';
 import "./dashboardpage.css";
-
 
 export const DashboardPage = () => {
   const { isLogged } = useUserDetails();
@@ -18,8 +15,13 @@ export const DashboardPage = () => {
   return (
     <div className="dashboard-container">
       <div className="Marco">
-        <Sidebar/>
+        <Sidebar />
+      </div>
+      <div className="content">
+        <Outlet />
       </div>
     </div>
   );
 };
+
+

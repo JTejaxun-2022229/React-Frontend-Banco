@@ -13,7 +13,7 @@ const Name = ({ name }) => {
     console.log(name)
     return (
         <>
-            <h1>Bienvenido</h1>
+            <h1>Welcome</h1>
             <h3>{name}</h3>
         </>
     )
