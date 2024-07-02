@@ -222,4 +222,10 @@
     background-color:  #5c5c5c;
 }
 
+.content {
+    margin-left: 250px; /* Ajusta esto para que el contenido no se superponga con el sidebar */
+    padding: 20px; /* Ajusta el relleno según tus necesidades */
+    flex-grow: 1;
+    overflow-y: auto;
+  }
 /*Aquí comienza el css del content para colocar el contendido de los form*/ 
