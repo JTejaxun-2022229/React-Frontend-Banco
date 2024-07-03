@@ -1,27 +1,27 @@
 import { NavLink } from 'react-router-dom';
-import iconClients from "../../assets/img/ClientsIcon.png"
-import iconCreateClient from "../../assets/img/CreateClient.png"
-import iconCreateAdmin from "../../assets/img/CreateAdmin.png"
-import iconProductList from "../../assets/img/Product.png"
+import IconUSerList from "../../assets/img/IconUSerList.png"
+import IconCredit from "../../assets/img/IconCredit.png"
+import IconNewAdmin from "../../assets/img/iconNewAdmin.png"
+import IconProducts from "../../assets/img/IconProducts.png"
 
 export const AdminSidebar = () => {
     return (
         <div className='button-sidebar-container'>
             <ul>
                 <li>
-                    <img src={iconClients} alt="iconClients" />
+                    <img src={IconUSerList} alt="iconClients" />
                     <NavLink to="/dashboard/clients">Clients</NavLink>
                 </li>
                 <li>
-                    <img src={iconCreateClient} alt="iconCreateClient" />
+                    <img src={IconCredit} alt="iconCreateClient" />
                     <NavLink to="/dashboard/create-client">Create Client</NavLink>
                 </li>
                 <li>
-                    <img src={iconCreateAdmin} alt="iconCreateAdmin" />
+                    <img src={IconNewAdmin} alt="iconCreateAdmin" />
                     <NavLink to="/dashboard/create-admin">Create Admin</NavLink>
                 </li>
                 <li>
-                    <img src={iconProductList} alt="iconProductList" />
+                    <img src={IconProducts} alt="iconProductList" />
                     <NavLink to="/dashboard/products">Products</NavLink>
                 </li>
             </ul>
