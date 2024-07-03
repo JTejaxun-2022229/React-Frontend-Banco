@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
+import UserImage from '../../assets/img/User.png';
 
 
 
@@ -27,7 +28,7 @@ export const UserPage = () => {
             </div>
             <div className="info-container">
                 <div className="info-user">
-                <img src="../../../public/img/user.png" alt="" />
+                <img src={UserImage} alt="User" />
                   <h1>User</h1>
                   <p>{userDetails ? userDetails.email : ''}</p>
                   <p>{userDetails ? userDetails.name : ''}</p>
