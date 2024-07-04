@@ -5,18 +5,17 @@ import logo from "../../assets/img/LogoQuetzalito_Principal.png"
 
 const Logo = () => {
     return (
-        <img src={logo} alt="Logo Principal" />
-    )
+        <img src={logo} alt="Logo Principal" className="sidebar-logo" />
+    );
 }
 
 const Name = ({ name }) => {
-    console.log(name)
     return (
-        <>
+        <div className="name-container">
             <h1>Welcome</h1>
             <h3>{name}</h3>
-        </>
-    )
+        </div>
+    );
 }
 
 export const Sidebar = () => {
@@ -25,7 +24,7 @@ export const Sidebar = () => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        if (user && user.role && user.name) {
+        if (user) {
             setRole(user.role);
             setName(user.name)
         }
@@ -33,19 +32,21 @@ export const Sidebar = () => {
 
     return (
         <div className="sidebar-container">
-            <div className='Sidebar-logo-container'>
+            <div className="sidebar-logo-container">
                 <Logo />
             </div>
-            <div className='Sidebar-TitleName-Container'>
+            <div className="sidebar-title-name-container">
                 <Name name={name} />
             </div>
-            {role === 'ADMIN_ROLE' ? (
-                <AdminSidebar />
-            ) : role === 'USER_ROLE' ? (
-                <UserSidebar />
-            ) : (
-                <div>No se encontró el rol del usuario</div>
-            )}
+            <div className="sidebar-menu">
+                {role === 'ADMIN_ROLE' ? (
+                    <AdminSidebar />
+                ) : role === 'USER_ROLE' ? (
+                    <UserSidebar />
+                ) : (
+                    <div>Rol not found, please Login</div>
+                )}
+            </div>
         </div>
     );
 };
