@@ -1,1 +1,0 @@
-export { TransferPage } from './TransferPage.jsx';
