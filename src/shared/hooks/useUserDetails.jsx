@@ -19,7 +19,8 @@ export const useUserDetails = () => {
 
   return {
     isLogged: Boolean(userDetails),
-    username: userDetails?.username ? userDetails.username : "Guest",
+    username: userDetails?.username ? userDetails.username : "Invalid", 
+    role: userDetails?.role ? userDetails.role : "RoleInvalid",
     logout,
   };
 };

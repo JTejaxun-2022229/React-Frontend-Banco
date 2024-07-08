@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { EditOutlined, DeleteForeverOutlined } from "@mui/icons-material";
-import { Modal } from "../manage/Modal"; // Adjust the import path as needed
+import { Modal } from "../../manage/Modal"; // Adjust the import path as needed
 
 export const Clients = () => {
   const [userList, setUserList] = useState([]);

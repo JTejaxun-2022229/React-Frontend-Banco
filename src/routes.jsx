@@ -1,11 +1,12 @@
 // routes.jsx
 import { DashboardPage } from "./pages/DashboardPage";
 import { AuthPage } from "./pages/auth";
-import { Clients } from "./components/clients/Clients";
-import { CreateClient } from "./components/createClient/CreateClient";
-import { CreateAdmin } from "./components/createAdmin/CreateAdmin";
+import { Clients } from "./components/content/clients/Clients";
+import { CreateAdmin } from "./components/content/createAdmin/CreateAdmin";
 import { Modal } from "./components/manage/Modal";
-import { Products } from "./components/products/Products";
+import { Products } from "./components/content/products/Products";
+import { AplicarCredit } from "./components/content/ApplyCredit/AplicarCredit";
+import { Home } from "./components/content/home/Home";
 
 const routes = [
     { path: '/', element: <AuthPage /> },
@@ -13,7 +14,9 @@ const routes = [
         { path: 'clients', element: <Clients /> },
         { path: 'create-client', element: <Modal /> },
         { path: 'create-admin', element: <CreateAdmin /> },
-        { path: 'products', element: <Products /> }
+        { path: 'products', element: <Products /> },
+        { path: 'applyCredit', element: <AplicarCredit/> },
+        { path: 'home', element: <Home/>}
     ]}
 ];
 

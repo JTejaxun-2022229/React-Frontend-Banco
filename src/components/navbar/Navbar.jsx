@@ -1,57 +1,30 @@
-import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import iconExit from "../../assets/img/IconExit.png"
-import { AdminSidebarRight } from '../form/AdminForm.jsx';
-import { UserSidebarRight } from "../form/UserForm.jsx";
+import { useEffect, useState } from "react";
+import { AdminNavbar } from '../form/AdminForm.jsx';
+import { UserNavbar } from '../form/UserForm.jsx';
 
-export const Navbar = () => {
-
-    const [sidebarOpen, setSidebarOpen] = useState(false)
+export const Navbar = () =>{
     const [role, setRole] = useState('');
-
-    const navigate = useNavigate();
-
-    const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
-    };
-
-    const handleLogout = () => {
-        localStorage.removeItem('user');
-        navigate('/')
-    };
+    const [name, setName] = useState('');
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        if (user && user.role) {
+        if (user) {
             setRole(user.role);
-            console.log(user.role)
+            setName(user.name)
         }
     }, []);
 
-    return (
-        <nav className='navbar'>
-            <div className="navbar-bars" onClick={toggleSidebar}>
-                <div></div>
-                <div></div>
-                <div></div>
+    return(
+        <div className="navbar-container">
+                <div className="sidebar-menu">
+                {role === 'ADMIN_ROLE' ? (
+                    <AdminNavbar />
+                ) : role === 'USER_ROLE' ? (
+                    <UserNavbar />
+                ) : (
+                    <div>Rol not found, please Login</div>
+                )}
             </div>
-            <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-                <button className="sidebar-close" onClick={toggleSidebar}>
-                    &times;
-                </button>
-                <div>
-                    {role === 'ADMIN_ROLE' ? (
-                        <AdminSidebarRight />
-                    ) : role === 'USER_ROLE' ? (
-                        <UserSidebarRight/>
-                    ) : (
-                        <div>User No encontrado</div>
-                    )}
-                </div>
-                <button className='sidebar-logout' onClick={handleLogout}>
-                    <img src={iconExit} alt="iconExit" /><a >Log out</a>
-                </button>
-            </div>
-        </nav>
+        </div>
     );
 };
