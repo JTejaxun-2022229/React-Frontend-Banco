@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AdminNavbar } from '../form/AdminForm.jsx';
+import { UserNavbar } from '../form/UserForm.jsx';
 
 export const Navbar = () =>{
     const [role, setRole] = useState('');
@@ -18,6 +19,8 @@ export const Navbar = () =>{
                 <div className="sidebar-menu">
                 {role === 'ADMIN_ROLE' ? (
                     <AdminNavbar />
+                ) : role === 'USER_ROLE' ? (
+                    <UserNavbar />
                 ) : (
                     <div>Rol not found, please Login</div>
                 )}
