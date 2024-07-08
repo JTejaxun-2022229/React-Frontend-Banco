@@ -4,7 +4,7 @@ import './Table.css'
 export const TransferTable = ({transfer}) => {
     console.log('Table de transferencias:', transfer)
 
-    const filteredTransfer = transfer && transfer.filter(transfered => transfered.emisor === transfer);
+    const filteredTransfer = transfer && transfer.filter(tr => tr.emisor === transfer);
 
     return(
         <table className="transfer-table">
