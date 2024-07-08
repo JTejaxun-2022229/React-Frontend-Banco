@@ -6,7 +6,7 @@ import iconHome from "../../assets/img/IconHome.png";
 import IconUser from "../../assets/img/User.png"
 
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState, useRef } from 'react';
+import{ useEffect, useState, useRef } from 'react';
 
 /**Retorna el formulalio del las opciones de Usuario*/
 export const UserSidebar = () => {
@@ -92,9 +92,6 @@ export const UserNavbar = () => {
 
   return (
       <div className='navbar'>
-          <div className='navbar-logo'>
-              <img src='logo.png' alt='Banco El Quetzalito' />
-          </div>
           <div className='user-icon' onClick={toggleSidebar}>
               <img src={IconUser} alt='User Icon' />
           </div>

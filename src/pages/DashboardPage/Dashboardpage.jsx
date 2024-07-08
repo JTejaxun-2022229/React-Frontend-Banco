@@ -15,14 +15,16 @@ export const DashboardPage = () => {
 
   return (
     <div className="dashboard-container">
-        <div className='dashboard-container'>
-            <Navbar />
-        </div>
       <div className="Marco">
         <Sidebar />
       </div>
       <div className="content">
-        <Outlet />
+        <div>
+          <Navbar/>
+        </div>
+        <div className="content__content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -1,35 +1,64 @@
 import { NavLink } from 'react-router-dom';
-import React, { useEffect, useState, useRef } from 'react';
+import{ useEffect, useState, useRef } from 'react';
 import IconUser from "../../assets/img/User.png"
 import IconUSerList from "../../assets/img/IconUSerList.png"
 import IconCredit from "../../assets/img/IconCredit.png"
 import IconNewAdmin from "../../assets/img/iconNewAdmin.png"
 import IconProducts from "../../assets/img/IconProducts.png"
 
+
+
 export const AdminSidebar = () => {
+    const [activeIndex, setActiveIndex] = useState(null);
+  
+    const handleClick = (index) => {
+      setActiveIndex(index);
+    };
+  
     return (
-        <div className='button-sidebar-container'>
-            <ul>
-                <li>
-                    <img src={IconUSerList} alt="iconClients" />
-                    <NavLink to="/dashboard/clients">Clients</NavLink>
-                </li>
-                <li>
-                    <img src={IconCredit} alt="iconCreateClient" />
-                    <NavLink to="/dashboard/create-client">Create Client</NavLink>
-                </li>
-                <li>
-                    <img src={IconNewAdmin} alt="iconCreateAdmin" />
-                    <NavLink to="/dashboard/create-admin">Create Admin</NavLink>
-                </li>
-                <li>
-                    <img src={IconProducts} alt="iconProductList" />
-                    <NavLink to="/dashboard/products">Products</NavLink>
-                </li>
-            </ul>
-        </div>
+      <div className="button-sidebar-container">
+        <ul>
+          <li
+            className={`button-sidebar-container ${
+              activeIndex === 0 ? "active" : ""
+            }`}
+            onClick={() => handleClick(0)}
+          >
+            <img src={IconUSerList} alt="iconClients" />
+            <NavLink to="/dashboard/clients">Clients</NavLink>
+          </li>
+          <li
+            className={`button-sidebar-container ${
+              activeIndex === 1 ? "active" : ""
+            }`}
+            onClick={() => handleClick(1)}
+          >
+            <img src={IconCredit} alt="iconClients" />
+            <NavLink to="/dashboard/create-client">Create Client</NavLink>
+          </li>
+          <li
+            className={`button-sidebar-container ${
+              activeIndex === 2 ? "active" : ""
+            }`}
+            onClick={() => handleClick(2)}
+          >
+            <img src={IconNewAdmin} alt="iconCreateClient" />
+            <NavLink to="/dashboard/create-admin">Create Admin</NavLink>
+          </li>
+          <li
+            className={`button-sidebar-container ${
+              activeIndex === 3 ? "active" : ""
+            }`}
+            onClick={() => handleClick(3)}
+          >
+            <img src={IconProducts} alt="iconCreateAdmin" />
+            <NavLink to="/dashboard/products">Products</NavLink>
+          </li>
+        </ul>
+      </div>
     );
-};
+  };
+
 
 export const AdminNavbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
