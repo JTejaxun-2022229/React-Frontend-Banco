@@ -4,7 +4,9 @@ import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { useUserDetails } from "../../shared/hooks";
 import UserImage from '../../assets/img/User.png';
 import { getTransfer } from "../../services/";
-import { TransferTable } from '../../components/table/TransferTable'
+import { TransferTable } from '../../components/table/TransferTable';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import "./userPage.css";
 
@@ -16,10 +18,10 @@ export const UserPage = () => {
   const [filteredTransfer, setFilteredTransfer] = useState([]);
 
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-
+/*
   useEffect(() => {
     console.log('El usuario es:', userDetails);
-  }, [userDetails]);
+  }, [userDetails]);*/
 
   useEffect(() => {
     const fetchTransfer = async () => {
@@ -41,19 +43,23 @@ export const UserPage = () => {
   useEffect(() => {
     if (Array.isArray(transfered.trans)) {
       const filtered = transfered.trans.filter(transfer =>
-        transfer.emisor.toLowerCase().includes(searchValue.toLowerCase())
+        transfer.emisor === userDetails.uid 
       );
       setFilteredTransfer(filtered);
     }
-  }, [transfered, searchValue]);
+  }, [transfered, userDetails]);
+
+  const goBack = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="view-user-container">
-      <div className="user-container">
-        <div className="img-container">
-          {/* Aquí podrías poner una imagen de usuario */}
-        </div>
+      <div className="user-container">     
         <div className="info-container">
+          <button className="close-button" onClick={goBack}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
           <div className="info-user">
             <img src={UserImage} alt="User" />
             <h1>User</h1>
