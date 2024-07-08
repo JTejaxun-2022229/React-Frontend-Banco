@@ -53,9 +53,10 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
             <h2>User Data</h2>
             <h3>Edit or Delete a User</h3>
           </header>
-          <form>
+          <form className="form-container">
             {/* Name */}
             <div className="textbox">
+              <label>Name</label>
               <input
                 type="text"
                 name="name"
@@ -67,6 +68,7 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
             {/* Username */}
             <div className="textbox">
+              <label>Username</label>
               <input
                 type="text"
                 name="username"
@@ -78,6 +80,7 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
             {/* No. Account */}
             <div className="textbox">
+              <label>Account</label>
               <input
                 type="text"
                 name="account"
@@ -87,19 +90,11 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
               />
             </div>
 
-            {/* Address */}
-            <div className="textbox">
-              <input
-                type="text"
-                name="address"
-                placeholder="Address"
-                value={formData.address}
-                onChange={handleInputChange}
-              />
-            </div>
+            {/* Address */} <div className="textbox full-width">   <label>Address</label><input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleInputChange} /> </div>
 
             {/* Phone */}
             <div className="textbox">
+              <label>Phone</label>
               <input
                 type="text"
                 name="phone"
@@ -111,6 +106,7 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
             {/* Email */}
             <div className="textbox">
+              <label>Email</label>
               <input
                 type="text"
                 name="email"
@@ -122,6 +118,7 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
             {/* WorkPlace */}
             <div className="textbox">
+              <label>WorkPlace</label>
               <input
                 type="text"
                 name="workPlace"
@@ -133,6 +130,7 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
             {/* Salary */}
             <div className="textbox">
+              <label>Salary</label>
               <input
                 type="text"
                 name="salary"
@@ -142,40 +140,33 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
               />
             </div>
 
-            {/* Balance */}
-            <div className="textbox">
-              <input
-                type="text"
-                name="balance"
-                placeholder="Balance"
-                value={formData.balance}
-                onChange={handleInputChange}
-              />
+            {/* Balance */} <div className="textbox full-width">   <label>Balance</label><input type="text" name="balance" placeholder="Balance" value={formData.balance} onChange={handleInputChange} /> </div>
+
+            {/* Botones para confirmar edición y eliminar */}
+            <div className="button-container">
+              <button
+                className="signup-button"
+                type="submit"
+                onClick={toggleModal}
+              >
+                <p>Edit</p>
+              </button>
+              <button
+                className="signup-button"
+                type="submit"
+                onClick={toggleModal}
+              >
+                <p>Delete</p>
+              </button>
             </div>
-
-            {/* Botón para confirmar edición */}
-            <button
-              className="signup-button"
-              type="submit"
-              onClick={toggleModal}
-            >
-              <p>Edit</p>
-            </button>
-
-            {/* Botón para eliminar */}
-            <button
-              className="signup-button"
-              type="submit"
-              onClick={toggleModal}
-            >
-              <p>Delete</p>
-            </button>
           </form>
         </div>
       </div>
     </section>
   );
 };
+
+
 
 
 
