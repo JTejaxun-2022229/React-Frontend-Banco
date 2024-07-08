@@ -56,7 +56,6 @@
 .title-form-login {
     display: flex;
     justify-content: center;
-    align-items: center;
     color: white;
     font-size: 20px;
 }
@@ -147,3 +146,24 @@
 .auth-form-switch-label:hover {
     opacity: 0.8;
 }
+
+.auth-form-validations-message{
+    font-size: 15px;
+}
+/*Estilo del icono de login*/
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .Icon-View-Password {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+  }

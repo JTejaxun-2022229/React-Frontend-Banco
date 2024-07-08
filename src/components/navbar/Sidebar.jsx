@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { AdminSidebar } from '../form/AdminForm.jsx';
 import { UserSidebar } from '../form/UserForm.jsx';
 import logo from "../../assets/img/LogoQuetzalito_Principal.png"
+import { useUserDetails } from '../../shared/hooks/useUserDetails.jsx';
+
 
 const Logo = () => {
     return (
@@ -12,23 +14,15 @@ const Logo = () => {
 const Name = ({ name }) => {
     return (
         <div className="name-container">
-            <h1>Welcome</h1>
+            <h1>Welcome!</h1>
             <h3>{name}</h3>
         </div>
     );
 }
 
 export const Sidebar = () => {
-    const [role, setRole] = useState('');
-    const [name, setName] = useState('');
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            setRole(user.role);
-            setName(user.name)
-        }
-    }, []);
+    const {username, role} = useUserDetails();
 
     return (
         <div className="sidebar-container">
@@ -36,7 +30,7 @@ export const Sidebar = () => {
                 <Logo />
             </div>
             <div className="sidebar-title-name-container">
-                <Name name={name} />
+                <Name name={username} />
             </div>
             <div className="sidebar-menu">
                 {role === 'ADMIN_ROLE' ? (
