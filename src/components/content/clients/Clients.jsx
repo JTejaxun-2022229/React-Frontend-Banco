@@ -10,8 +10,9 @@ import {
   TableBody,
 } from "@mui/material";
 import axios from "axios";
-import { EditOutlined, DeleteForeverOutlined } from "@mui/icons-material";
-import { Modal } from "../../manage/Modal"; // Adjust the import path as needed
+import { EditOutlined } from "@mui/icons-material";
+import { Modal } from "../../manage/Modal";
+import "./clients.css";
 
 export const Clients = () => {
   const [userList, setUserList] = useState([]);
@@ -31,7 +32,7 @@ export const Clients = () => {
 
         if (Array.isArray(response.data.users)) {
           console.log("Setting user list:", response.data.users);
-          setUserList(response.data.users); // Asignar correctamente el array de usuarios
+          setUserList(response.data.users);
         } else {
           console.error("Response data is not an array:", response.data.users);
         }
@@ -48,7 +49,7 @@ export const Clients = () => {
   };
 
   return (
-    <div>
+    <div className="Tabla">
       <TableContainer component={Paper} elevation={2}>
         <Table>
           <TableHead>
