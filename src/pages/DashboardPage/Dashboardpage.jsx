@@ -1,9 +1,8 @@
-// DashboardPage.jsx
 import { useEffect } from "react";
 import { useUserDetails } from "../../shared/hooks";
 import { Sidebar } from "../../components/navbar/Sidebar";
 import { Outlet } from 'react-router-dom';
-import { Navbar } from "../../components/navbar/Navbar"
+import { Navbar } from "../../components/navbar/Navbar";
 import "./dashboardpage.css";
 
 export const DashboardPage = () => {
@@ -15,17 +14,16 @@ export const DashboardPage = () => {
 
   return (
     <div className="dashboard-container">
-        <div className='dashboard-container'>
-            <Navbar />
-        </div>
-      <div className="Marco">
+      <Navbar />
+      <div className="main-content">
         <Sidebar />
-      </div>
-      <div className="content">
-        <Outlet />
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
 };
+
 
 
