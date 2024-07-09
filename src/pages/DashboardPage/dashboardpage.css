@@ -1,23 +1,7 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; 
-}
-
 .dashboard-container{
     height: 100vh;
     width: 100%;
-}
-
-.navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #222;
-    padding: 10px 10px;
-    position: relative;
-    height: 90px;
 }
 
 .navbar-logo {
@@ -38,10 +22,6 @@ html, body {
 .user-icon{
     display: flex;
     height: 5px;
-}
-
-.user-icon img {
-    height: 30px;
 }
 
 .sidebar {
@@ -144,18 +124,16 @@ html, body {
 /*navbar*/
 
 .navbar {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    background-color: #ffffff;
-    padding: 10px 10px;
-    height: 90px;
+    background-color: transparent;
+    height: 15%;
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-logo img {
-    height: 20vh;
+    padding: 2%;
 }
 
 .user-icon {
@@ -163,10 +141,11 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .user-icon img {
-    height: 30px;
+    height: 40px;
     filter: invert(1);
 }
 
@@ -244,7 +223,7 @@ html, body {
     bottom: 0;
     left: 0;
     top: 0;
-    width: 240px;
+    width: 16%;
     background-color: #2E3A45;
     display: flex;
     flex-direction: column;
@@ -260,7 +239,7 @@ html, body {
 }
 
 .sidebar-logo {
-    width: 100px;
+    width: 75%;
 }
 
 .sidebar-title-name-container {
@@ -317,6 +296,10 @@ html, body {
     flex-grow: 1;
 }
 
+.button-sidebar-container.active{
+    background-color: #4C5C68;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .sidebar-container {
@@ -325,7 +308,7 @@ html, body {
     }
 
     .sidebar-logo {
-        width: 40px;
+        width: 100%;
     }
 
     .sidebar-title-name-container {
@@ -358,24 +341,77 @@ html, body {
 
 /*Fin de css de sidebar izquierdo*/
 
+/*Estilos del sidebar derecho*/
+.form-sidebar-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin:2px 0;
+    width: 100%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-sidebar-button:hover {
+    background-color:  #5c5c5c;
+}
+
 /*Inicio de css de content*/
 .content {
-    margin-left: 240px;
-    padding: 20px;
-    flex-grow: 1;
-    overflow-y: auto;
-    transition: margin-left 0.3s ease;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+    position: absolute;
+    left: 16%;
+    height: 100%;
+    width: 84%;
+  }
+   
+  .content__content {
+    position: absolute;
+    top: 15%;
+    padding: 4%;
+    display: flex;
+    height: 85%;
+    width: 100%;
+  }
+   
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
     .content {
-        margin-left: 60px;
+      left: 10%;
+      width: 90%;
     }
-}
-
-@media (max-width: 480px) {
+  }
+   
+  @media (max-width: 768px) {
     .content {
-        margin-left: 50px;
+      position: relative;
+      left: 0;
+      width: 100%;
+      margin-left: 0;
+      height: auto;
     }
-}
+   
+    .content__content {
+      position: relative;
+      top: 0;
+      flex-direction: column;
+      height: auto;
+    }
+  }
+   
+  @media (max-width: 480px) {
+    .content {
+      margin-left: 0;
+      padding: 0 10px;
+    }
+   
+    .content__content {
+      padding: 2%;
+    }
+  }
+/*Fin de css de content*/
