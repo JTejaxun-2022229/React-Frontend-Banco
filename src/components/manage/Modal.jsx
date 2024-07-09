@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "./modal.css";
 
-export const Modal = ({ isOpen, toggleModal, user }) => {
+export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
+  const admin = JSON.parse(localStorage.getItem("user"));
+
   const [formData, setFormData] = useState({
+    uid: "",
     name: "",
     username: "",
     account: "",
@@ -16,7 +20,9 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
 
   useEffect(() => {
     if (user) {
+      console.log("User data loaded:", user);
       setFormData({
+        uid: user.uid || "",
         name: user.name || "",
         username: user.username || "",
         account: user.account || "",
@@ -38,8 +44,41 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
+    console.log("Form data updated:", formData);
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submitting form with data:", formData);
+
+    try {
+      const response = await axios.put(
+        `http://127.0.0.1:4000/quetzalito/v1/user/updateUser/${formData.uid}`,
+        formData
+      );
+      console.log("Response received:", response);
+
+      toggleModal();
+      refreshUsers(); // Refrescar la lista de usuarios después de la actualización
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:4000/quetzalito/v1/user/${formData.uid}`
+      );
+      console.log("Response received:", response);
+
+      toggleModal();
+      refreshUsers(); // Refrescar la lista de usuarios después de la eliminación
+    } catch (error) {
+      console.error("Error al eliminar el usuario:", error);
+    }
   };
 
   return (
@@ -51,9 +90,9 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
         <div className="modal-1-modal" onClick={handleModalClick}>
           <header>
             <h2>User Data</h2>
-            <h3>Edit or Delete a User</h3>
+            <h3>Hi {admin.name}, you can modify or delete this user</h3>
           </header>
-          <form className="form-container">
+          <form className="form-container" onSubmit={handleFormSubmit}>
             {/* Name */}
             <div className="textbox">
               <label>Name</label>
@@ -90,7 +129,29 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
               />
             </div>
 
-            {/* Address */} <div className="textbox full-width">   <label>Address</label><input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleInputChange} /> </div>
+            {/* WorkPlace */}
+            <div className="textbox">
+              <label>WorkPlace</label>
+              <input
+                type="text"
+                name="workPlace"
+                placeholder="WorkPlace"
+                value={formData.workPlace}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {/* Address */}
+            <div className="textbox full-width">
+              <label>Address</label>
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                value={formData.address}
+                onChange={handleInputChange}
+              />
+            </div>
 
             {/* Phone */}
             <div className="textbox">
@@ -116,18 +177,6 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
               />
             </div>
 
-            {/* WorkPlace */}
-            <div className="textbox">
-              <label>WorkPlace</label>
-              <input
-                type="text"
-                name="workPlace"
-                placeholder="WorkPlace"
-                value={formData.workPlace}
-                onChange={handleInputChange}
-              />
-            </div>
-
             {/* Salary */}
             <div className="textbox">
               <label>Salary</label>
@@ -140,21 +189,27 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
               />
             </div>
 
-            {/* Balance */} <div className="textbox full-width">   <label>Balance</label><input type="text" name="balance" placeholder="Balance" value={formData.balance} onChange={handleInputChange} /> </div>
+            {/* Balance */}
+            <div className="textbox">
+              <label>Balance</label>
+              <input
+                type="text"
+                name="balance"
+                placeholder="Balance"
+                value={formData.balance}
+                onChange={handleInputChange}
+              />
+            </div>
 
             {/* Botones para confirmar edición y eliminar */}
             <div className="button-container">
-              <button
-                className="signup-button"
-                type="submit"
-                onClick={toggleModal}
-              >
+              <button className="signup-button" type="submit">
                 <p>Edit</p>
               </button>
               <button
                 className="signup-button"
-                type="submit"
-                onClick={toggleModal}
+                type="button"
+                onClick={handleDeleteUser}
               >
                 <p>Delete</p>
               </button>
@@ -165,8 +220,3 @@ export const Modal = ({ isOpen, toggleModal, user }) => {
     </section>
   );
 };
-
-
-
-
-

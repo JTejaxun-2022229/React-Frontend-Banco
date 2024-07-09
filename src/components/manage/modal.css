@@ -6,19 +6,27 @@ body {
 * {
     box-sizing: border-box;
 }
+
 .page.modal-1-page {
     background: #ffffff;
 }
+
 .container {
     max-width: 700px;
     margin: 0 auto;
 }
+
 .form-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 20px;
 }
+
+.textbox.full-width {
+    grid-column: span 2;
+}
+
 .modal-1-footer {
     position: fixed;
     left: 0;
@@ -29,6 +37,7 @@ body {
     background: #0a1535;
     color: #f9f9f9;
 }
+
 .modal-1-footer article {
     display: flex;
     flex-direction: column;
@@ -37,13 +46,15 @@ body {
     gap: 16px;
     padding: 20px 50px 40px;
     margin: -99px 20px 20px;
-    border-radius: 10px;
+    border-radius: 10px 10px;
     background: linear-gradient(90deg, #773ecb, #9f63ff);
 }
+
 .modal-1-footer article h2 {
     font-weight: 400;
     color: rgb(255 255 255 / 70%);
 }
+
 .signup-button {
     display: flex;
     align-items: center;
@@ -59,24 +70,29 @@ body {
     font-family: inherit;
     font-size: 16px;
 }
+
 .button-container {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     padding: 20px;
 }
+
 .modal-1-footer section {
     padding: 0 50px;
 }
+
 .modal-1-footer section.top {
     padding-top: 30px;
     margin-bottom: 48px;
 }
+
 .modal-1-footer section.top img {
     display: block;
     height: 30px;
     margin: 0 0 30px;
 }
+
 .modal-1-footer section.top ul {
     list-style: none;
     padding: 0;
@@ -85,33 +101,42 @@ body {
     gap: 30px;
     grid-template-columns: repeat(2, 1fr);
 }
+
 @media (min-width: 480px) {
     .modal-1-footer article button {
         width: 70%;
     }
+
     .modal-1-footer section.top ul {
         padding-right: 10%;
     }
-}@media (min-width: 600px) {
+}
+
+@media (min-width: 600px) {
     .modal-1-footer article {
         flex-direction: row;
         min-height: 140px;
         margin: -70px 20px 20px;
         padding: 30px 50px 30px;
     }
+
     .modal-1-footer article button {
         width: auto;
         padding: 0 20px 0 24px;
     }
+
     .modal-1-footer section.top ul {
         grid-template-columns: repeat(4, 1fr);
         padding-right: 0;
     }
-}.modal-1-footer section.top ul li a {
+}
+
+.modal-1-footer section.top ul li a {
     display: block;
     margin-bottom: 18px;
     color: rgb(255 255 255 / 90%);
 }
+
 .modal-1-footer section.top h3 {
     color: rgb(255 255 255 / 40%);
     font-weight: 400;
@@ -120,24 +145,31 @@ body {
     letter-spacing: 1px;
     margin-bottom: 20px;
 }
-.modal-1-overlay,.modal-1-modal {
+
+.modal-1-overlay,
+.modal-1-modal {
     position: fixed;
     opacity: 0;
     visibility: hidden;
     transition: 0.5s;
 }
+
 @keyframes overlay-in {
     0% {
         scale: 0 0.004;
     }
+
     33% {
         scale: 1 0.004;
     }
+
     66%,
     100% {
         scale: 1 1;
     }
-}.modal-1-overlay {
+}
+
+.modal-1-overlay {
     z-index: 1;
     top: 0;
     left: 0;
@@ -146,11 +178,14 @@ body {
     background: rgb(0 0 0 / 75%);
     display: grid;
     place-items: center;
-}.modal-1-overlay.open {
+}
+
+.modal-1-overlay.open {
     visibility: visible;
     opacity: 1;
     animation: overlay-in 1s both;
 }
+
 @keyframes modal-in {
 
     0%,
@@ -159,39 +194,48 @@ body {
         visibility: hidden;
         translate: -50% -40%;
     }
+
     100% {
         opacity: 1;
         visibility: visible;
     }
-}.modal-1-modal {
+}
+
+.modal-1-modal {
     z-index: 2;
     width: 90%;
-    max-width: 600px; /* Cambia el ancho máximo aquí */top: 50%;
+    max-width: 600px;
+    max-height: 90vh;
+    top: 50%;
     left: 50%;
     background: #ffffff;
     border-radius: 12px;
-    padding: 0 20px 50px;
+    padding: 0 0px 50px;
     translate: -50% -50%;
     box-shadow: 0 10px 30px rgb(0 0 0 / 24%);
 }
+
 .modal-1-overlay.open .modal-1-modal {
     opacity: 1;
     visibility: visible;
     animation: modal-in 1s;
 }
+
 .modal-1-modal header {
     position: relative;
     z-index: 3;
     width: 100%;
     height: 170px;
     background: linear-gradient(90deg, #773ecb, #9f63ff);
-    border-radius: 12px 12px 0 0;
+    border-radius: 2px 2px 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 0 20px;
     box-shadow: 0 16px 30px rgb(0 0 0 / 12%);
-    margin-bottom: -85px; /* Position the header above the white container */}
+    margin-bottom: -85px;
+}
+
 .modal-1-modal h2 {
     margin-bottom: 10px;
     font-size: 29px;
@@ -206,7 +250,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    padding-top: 100px; /* Ensure form content starts below the header */
+    padding-top: 100px;
 }
 
 .textbox {
@@ -248,6 +292,6 @@ body {
     margin: 30px 0 0;
 }
 
-/* Ensure full width for single column elements */.modal-1-modal form .textbox.full-width {
+.modal-1-modal form .textbox.full-width {
     grid-column: 1 / -1;
 }

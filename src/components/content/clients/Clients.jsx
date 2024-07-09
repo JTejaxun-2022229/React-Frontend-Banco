@@ -21,25 +21,26 @@ export const Clients = () => {
 
   const toggleModal = () => setIsOpen(!isOpen);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:4000/quetzalito/v1/user"
-        );
-        console.log(response, "response completa");
-        console.log(response.data, "response.data");
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:4000/quetzalito/v1/user"
+      );
+      console.log(response, "response completa");
+      console.log(response.data, "response.data");
 
-        if (Array.isArray(response.data.users)) {
-          console.log("Setting user list:", response.data.users);
-          setUserList(response.data.users);
-        } else {
-          console.error("Response data is not an array:", response.data.users);
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+      if (Array.isArray(response.data.users)) {
+        console.log("Setting user list:", response.data.users);
+        setUserList(response.data.users);
+      } else {
+        console.error("Response data is not an array:", response.data.users);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
     getUsers();
   }, []);
 
@@ -89,7 +90,13 @@ export const Clients = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Modal isOpen={isOpen} toggleModal={toggleModal} user={selectedUser} />
+      <Modal
+        isOpen={isOpen}
+        toggleModal={toggleModal}
+        user={selectedUser}
+        refreshUsers={getUsers}
+      />
     </div>
   );
 };
+
