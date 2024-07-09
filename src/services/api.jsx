@@ -1,5 +1,4 @@
 import axios from "axios";
-import { logout } from "../shared/hooks";
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:4000/quetzalito/v1',
@@ -8,7 +7,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
     (config) => {
-        const userDetails = localStorage.getItem('user')
+        const userDetails = localStorage.getItem('token')
 
         if (userDetails) {
             const token = JSON.parse(userDetails).token
@@ -20,7 +19,6 @@ apiClient.interceptors.request.use(
         return Promise.reject(e)
     }
 )
-
 
 /* -----------------USUARIOS--------------------------*/
 export const login = async (data) => {
@@ -55,13 +53,5 @@ export const getUserEmail = async (email) => {
             e
 
         }
-    }
-}
-
-const checkResponseStatus = (e) => {
-    const responseStatus = e?.response?.status
-
-    if (responseStatus) {
-        (responseStatus === 401 || responseStatus === 403) && logout
     }
 }

@@ -22,10 +22,8 @@ export const useLogin = () => {
             const userDetails = response.data.account;
             localStorage.setItem('user', JSON.stringify(userDetails));
 
-            const role = userDetails.role;
-            if(!role){
-                throw new Error(errorMessage);
-            }
+            const token = response.data.token;
+            localStorage.setItem('token', token);
             
             navigate("/dashboard");
 
