@@ -61,7 +61,7 @@ export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
       console.log("Response received:", response);
 
       toggleModal();
-      refreshUsers(); // Refrescar la lista de usuarios después de la actualización
+      refreshUsers();
     } catch (error) {
       console.error("Error al actualizar el usuario:", error);
     }
@@ -75,7 +75,7 @@ export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
       console.log("Response received:", response);
 
       toggleModal();
-      refreshUsers(); // Refrescar la lista de usuarios después de la eliminación
+      refreshUsers();
     } catch (error) {
       console.error("Error al eliminar el usuario:", error);
     }
