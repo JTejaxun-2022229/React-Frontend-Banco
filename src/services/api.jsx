@@ -66,9 +66,11 @@ const checkResponseStatus = (e) => {
     }
 }
 
-export const getTransfer = async () => {
+export const getTransfer = async (emisorId) => {
     try {
-        return await apiClient.get('/transfer')
+        console.log('api',emisorId)
+        return await apiClient.get(`/transfer/?emisorId=${emisorId}`)
+        return response.data;
     } catch (e) {
         return {
             error: true,

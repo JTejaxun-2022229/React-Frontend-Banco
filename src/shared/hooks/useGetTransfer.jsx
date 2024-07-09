@@ -1,46 +1,45 @@
 import { useEffect, useState } from "react";
 import { getTransfer } from "../../services";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
-const useTransferData = (emisorId) => {
-    const [transfered, setTransfered] = useState({trans:[]});
+export const useTransferData = (emisorId) => {
+    const [transfered, setTransfered] = useState([]);
     const [filteredTransfer, setFilteredTransfer] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(()=> {
+    useEffect(() => {
         const fetchTransfer = async () => {
             setIsLoading(true);
 
-            try{
-                const response = await getTransfer();
-
-                if(!response.error){
-                    setTransfered(response.data || { trans: []});
-                    setIsLoading(false)
+            try {
+                const response = await getTransfer(emisorId);
+                if (!response.error) {
+                    setTransfered(response.data || []);
                 } else {
-                    console.error('Error, no se han podido cargar las transferencias:', error);
-                    setIsLoading(false);
+                    console.error('Error al cargar las transferencias:', response.error);
                 }
-
-            }catch(error){
-                console.error('Error al cargar las transferencias de este usuario:', error);
-                setIsLoading(false)
+            } catch (error) {
+                console.error('Error al cargar las transferencias:', error);
+            } finally {
+                setIsLoading(false);
             }
         };
 
         fetchTransfer();
-    }, []);
+    }, [emisorId]);
 
     useEffect(() => {
-        if (Array.isArray(transfered.trans)) {
-            const filtered = transfered.trans.filter(tr => tr.emisor === emisorId);
+        if (Array.isArray(transfered)) {
+            const filtered = transfered.filter(tr => tr.emisor === emisorId);
             setFilteredTransfer(filtered);
         }
     }, [transfered, emisorId]);
+
+    //console.log('transfered', transfered);
+    //console.log('filteredTransfer', filteredTransfer);
 
     return {
         transfered,
         filteredTransfer,
         isLoading,
     };
-}
+};

@@ -7,47 +7,45 @@ import { getTransfer } from "../../services/";
 import { TransferTable } from '../../components/table/TransferTable';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useTransferData} from '../../shared/hooks';
+
 
 import "./userPage.css";
 
 export const UserPage = () => {
   const { isLogged } = useUserDetails();
 
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
   const [transfered, setTransfered] = useState({ trans: [] });
   const [searchValue, setSearchValue] = useState('');
-  const [filteredTransfer, setFilteredTransfer] = useState([]);
+  const { filteredTransfer, isLoading } = useTransferData(userDetails.uid);
 
-  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-/*
+  //console.log('transfer',filteredTransfer)
+  
+
+
+
   useEffect(() => {
     console.log('El usuario es:', userDetails);
-  }, [userDetails]);*/
+  }, [userDetails]);
 
   useEffect(() => {
     const fetchTransfer = async () => {
-      try {
-        const response = await getTransfer();
-        if (!response.error) {
-          setTransfered(response.data || { trans: [] });
-        } else {
-          console.error('Error al cargar las transferencias:', response.error);
+        try {
+            const response = await getTransfer(userDetails.uid);
+            if (!response.error) {
+            } else {
+                console.error('Error al cargar las transferencias:', response.error);
+            }
+        } catch (error) {
+            console.error('Error al cargar las transferencias:', error);
         }
-      } catch (error) {
-        console.error('Error al cargar las transferencias:', error);
-      }
     };
 
     fetchTransfer();
-  }, []);
+}, []);
 
-  useEffect(() => {
-    if (Array.isArray(transfered.trans)) {
-      const filtered = transfered.trans.filter(transfer =>
-        transfer.emisor === userDetails.uid 
-      );
-      setFilteredTransfer(filtered);
-    }
-  }, [transfered, userDetails]);
 
   const goBack = () => {
     window.location.reload();

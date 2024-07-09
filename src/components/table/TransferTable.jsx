@@ -1,42 +1,38 @@
-import React, { useState } from "react";
-import './Table.css'
+import React from "react";
+import './Table.css';
 
-export const TransferTable = ({transfer}) => {
-    console.log('Table de transferencias:', transfer)
+export const TransferTable = ({ transfer }) => {
+    //console.log('Table de transferencias:', transfer);
 
-    const filteredTransfer = transfer && transfer.filter(tr => tr.emisor === transfer);
+    const filteredTransfer = Array.isArray(transfer) ? transfer.filter(tr => tr.emisor === transfer) : [];
 
-    return(
+    const limitedTransfer = transfer.slice(0, 5);
+
+    return (
         <table className="transfer-table">
             <thead>
                 <tr>
-                    <td>Recipient</td>
-                    <td>Amount</td>
-                    <td>Date</td>
-                    <td>Description</td>
+                    <th>Recipient</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                {filteredTransfer && filteredTransfer.length > 0 ? (
-                    filteredTransfer.map((tr, index) => (
-                    tr.emisor == transfer && (
-                        <tr key={index}>
-                            <td>{tr.receptor}</td>
-                            <td>{tr.amount}</td>
-                            <td>{tr.date}</td>
-                            <td>{tr.description}</td>
-                        </tr>
-                    )
-                    ))
-                ) : (
-                    
+                {limitedTransfer.map((tr, index) => (
+                    <tr key={index}>
+                        <td>{tr.receptor}</td>
+                        <td>{tr.amount}</td>
+                        <td>{tr.date}</td>
+                        <td>{tr.description}</td>
+                    </tr>
+                ))}
+                {transfer.length > 5 && (
                     <tr>
-                        <td colSpan="2" className="no-transfer">No se han realizado transacciones</td>
+                        <td colSpan="4" className="more-rows">More rows available...</td>
                     </tr>
                 )}
-                
             </tbody>
         </table>
-        
-    )
-}
+    );
+};
