@@ -28,7 +28,7 @@ export const CreditContainer = () => {
             }`}
             onClick={() => handleClick(1)}
           >
-            <NavLink to="/dashboard/accepted-history">Historial Aceptados</NavLink>
+            <NavLink to="/dashboard/content/accepted-history">Historial Aceptados</NavLink>
           </li>
           <li
             className={`navbar-items ${
@@ -36,7 +36,7 @@ export const CreditContainer = () => {
             }`}
             onClick={() => handleClick(2)}
           >
-            <NavLink to="/dashboard/denied-history">Historial Denegados</NavLink>
+            <NavLink to="/dashboard/content/denied-history">Historial Denegados</NavLink>
           </li>
         </ul>
       </div>

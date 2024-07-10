@@ -7,14 +7,16 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Button  // Asegúrate de importar Button para los nuevos botones
+  Button
 } from "@mui/material";
-import { EditOutlined, CheckCircle, Verified } from "@mui/icons-material";
+import { CheckCircle, Verified } from "@mui/icons-material";
 import { Modal } from "../../manage/Modal";
-import { useCredit } from '../../../shared/hooks';  // Ajusta la ruta de importación del hook
+import { useCredit } from '../../../shared/hooks';
+import { useAuthorisation } from '../../../shared/hooks';  
 
 export const AceptCredit = () => {
-  const { isFetching, credits, verifyCredit, approveCredit } = useCredit();
+  const { isFetching, credits } = useCredit();
+  const { Authentication, isLoading } = useAuthorisation();
   const [selectedUser, setSelectedUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,8 +24,9 @@ export const AceptCredit = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleApprove = (creditId) => {
-    approveCredit(creditId);
+  const handleCredit = async (creditId, status, event) => {
+    event.preventDefault();
+    Authentication(creditId, status);
   };
 
   return (
@@ -50,12 +53,23 @@ export const AceptCredit = () => {
                 <TableCell>{credit.status}</TableCell>
                 <TableCell>
                   <Button
-                    onClick={() => handleApprove(credit.id)}
+                    onClick={(event) => handleCredit(credit.id, 'accepted', event)}
                     size="small"
                     color="info"
                     startIcon={<CheckCircle />}
+                    disabled={isLoading}
                   >
                     Aprobado
+                  </Button>
+                  <Button
+                    onClick={(event) => handleCredit(credit.id,'denied', event)}
+                    size="small"
+                    color="secondary"
+                    startIcon={<Verified />}
+                    style={{ marginLeft: '10px' }}
+                    disabled={isLoading}
+                  >
+                    Denegado
                   </Button>
                 </TableCell>
               </TableRow>

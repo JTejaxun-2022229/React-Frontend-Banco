@@ -69,9 +69,38 @@ export const postCredit = async (data) =>{
 
 export const getCredit = async () =>{
     try {
-        return await apiClient.get('/credit/credits')
+        return await apiClient.get('/credit/pending')
     } catch (e) {
         error: true,
         e
+    }
+}
+
+export const getCreditAccepted = async () =>{
+    try {
+        return await apiClient.get('/credit/accepted')
+    } catch (e) {
+        error: true,
+        e
+    }
+}
+
+export const getCreditDenied = async () =>{
+    try {
+        return await apiClient.get('/credit/denied')
+    } catch (e) {
+        error: true,
+        e
+    }
+}
+
+export const postAuthentication = async (data) =>{
+    try {
+        return await apiClient.post('/credit/authorize', data)
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
     }
 }

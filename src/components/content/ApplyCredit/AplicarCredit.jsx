@@ -65,8 +65,7 @@ export const AplicarCredit = () => {
   const handleCredit = (event) => {
     event.preventDefault();
 
-    credit(formData.userAccount.value,formData.amount.value,formData.description.value
-    );
+    credit(formData.userAccount.value,formData.amount.value,formData.description.value);
   };
 
   const isSubmitButtonDisabled =

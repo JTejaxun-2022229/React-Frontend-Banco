@@ -9,6 +9,10 @@ import { AplicarCredit } from "./components/content/ApplyCredit/AplicarCredit";
 import { Home } from "./components/content/home/Home";
 import {CreditContainer} from "./components/content/AceptCredit/CreditContainer";
 import { AceptCredit } from "./components/content/AceptCredit/AceptCredit";
+import { AceptCreditAcep } from "./components/content/AceptCredit/AceptCreditAcep";
+import { AceptCreditDen } from "./components/content/AceptCredit/AceptCreditDen";
+
+
 const routes = [
     { path: '/', element: <AuthPage /> },
     { path: '/dashboard', element: <DashboardPage />, children: [
@@ -19,7 +23,9 @@ const routes = [
         { path: 'applyCredit', element: <AplicarCredit/> },
         { path: 'home', element: <Home/>},
         { path: '/dashboard/content', element: <CreditContainer/>, children: [
-            { path: 'accept-credit', element: <AceptCredit/>}
+            { path: 'accept-credit', element: <AceptCredit/>},
+            { path: 'accepted-history', element: <AceptCreditAcep/>},
+            { path: 'denied-history', element: <AceptCreditDen/>}
         ]}
     ]},
 ];
