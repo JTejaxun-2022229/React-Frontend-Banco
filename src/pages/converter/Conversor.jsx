@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from "react-router-dom";
 
 import './conversor.css'
 
@@ -13,6 +14,7 @@ export const Conversor = () => {
     });
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const currencyCodes = ["GTQ", "EUR", "MXN", "USD", "HNL", "NIO", "CRC","CAD"];
 
@@ -43,7 +45,7 @@ export const Conversor = () => {
     };
 
     const goBack = () => {
-    window.location.reload();
+        navigate('../user');
     };
     
     return (
