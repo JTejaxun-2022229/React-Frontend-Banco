@@ -60,10 +60,11 @@ export const UserPage = () => {
           </button>
           <div className="info-user">
             <img src={UserImage} alt="User" />
-            <h1>User</h1>
+            <h1>{userDetails ? userDetails.username : ''}</h1>
             <p>{userDetails ? userDetails.email : ''}</p>
             <p>{userDetails ? userDetails.name : ''}</p>
             <p>{userDetails ? userDetails.phone : ''}</p>
+            <p>{userDetails ? userDetails.address : ''}</p>
           </div>
           <hr />
           <div className="info-account">
