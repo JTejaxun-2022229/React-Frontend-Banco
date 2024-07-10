@@ -62,7 +62,7 @@ export const UserSidebar = () => {
           onClick={() => handleClick(4)}
         >
           <img src={iconFavorite} alt="iconProductList" />
-          <NavLink to="/dashboard/products">Favorite</NavLink>
+          <NavLink to="/dashboard/favorite">Favorite</NavLink>
         </li>
       </ul>
     </div>

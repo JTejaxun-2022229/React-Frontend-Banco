@@ -3,6 +3,7 @@ import { AuthPage } from "./pages/auth";
 import { Clients } from "./components/content/clients/Clients";
 import { CreateAdmin } from "./components/content/createAdmin/CreateAdmin";
 import { CreateClient } from "./components/content/createClient/CreateClient";
+import { Favorite } from "./components/content/favorite/Favorite";
 import { Products } from "./components/content/products/Products";
 import { AplicarCredit } from "./components/content/ApplyCredit/AplicarCredit";
 import { Home } from "./components/content/home/Home";
@@ -16,7 +17,8 @@ const routes = [
         { path: 'create-admin', element: <CreateAdmin /> },
         { path: 'products', element: <Products /> },
         { path: 'applyCredit', element: <AplicarCredit /> },
-        { path: 'home', element: <Home /> }
+        { path: 'home', element: <Home /> },
+        { path: 'favorite', element: <Favorite /> }
     ]}
 ];
 
