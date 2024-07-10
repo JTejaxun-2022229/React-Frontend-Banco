@@ -65,3 +65,16 @@ const checkResponseStatus = (e) => {
         (responseStatus === 401 || responseStatus === 403) && logout
     }
 }
+
+export const getTransfer = async (emisorId) => {
+    try {
+        console.log('api',emisorId)
+        return await apiClient.get(`/transfer/?emisorId=${emisorId}`)
+        return response.data;
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}

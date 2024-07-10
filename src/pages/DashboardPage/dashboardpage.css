@@ -1,13 +1,22 @@
 html, body {
+<<<<<<< HEAD
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden; 
+=======
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+>>>>>>> develop
 }
 
 .dashboard-container{
     height: 100vh;
     width: 100%;
+    margin-top: 0px;
+    overflow: hidden;
 }
 
 .navbar {
@@ -256,7 +265,7 @@ html, body {
 }
 
 .sidebar-logo {
-    width: 100px;
+    width: 75%;
 }
 
 .sidebar-title-name-container {
@@ -313,6 +322,10 @@ html, body {
     flex-grow: 1;
 }
 
+.button-sidebar-container.active{
+    background-color: #4C5C68;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .sidebar-container {
@@ -321,7 +334,7 @@ html, body {
     }
 
     .sidebar-logo {
-        width: 40px;
+        width: 100%;
     }
 
     .sidebar-title-name-container {
@@ -381,6 +394,7 @@ html, body {
     padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
+    height: 100%;
     transition: margin-left 0.3s ease;
 }
 

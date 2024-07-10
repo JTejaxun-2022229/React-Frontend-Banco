@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 .Contentbackground-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+=======
+ .Content__background-container {
+    display: flex;
+>>>>>>> develop
   }
   
   .form-container {
@@ -11,6 +16,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
     width: 400px;
     text-align: left;
   }
@@ -20,10 +26,22 @@
     font-size: 24px;
     font-weight: bold;
     color: #fff;
+=======
+    width: 500px;
+    text-align: left;
+  }
+  
+  .form-container__title h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+>>>>>>> develop
   }
   
   .form-container__form {
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
   }
   
@@ -50,6 +68,44 @@
     margin-bottom: 5px;
   }
   
+=======
+    margin: 5%;
+    flex-direction: column;
+    color: black;
+  }
+ 
+  .form-container__form  span{
+    display: flex;
+    margin-top: 1%;
+    color: black;
+  }
+
+  .form-container__form [type="text"],[type="number"]{
+    background-color: white;
+    width: 60%;
+    height: 30px;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 2%;
+  }
+
+  .form-container__form [type="text"]:disabled{
+     
+  }
+
+  .form-container__form textarea{
+    background-color: white;
+    width: 100%;
+    min-height: 50px;
+    max-height: 150px;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 2%;
+  }
+
+>>>>>>> develop
   button[type="submit"] {
     width: 100%;
     padding: 10px;

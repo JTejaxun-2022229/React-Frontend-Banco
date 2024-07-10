@@ -7,4 +7,8 @@ export const Products = () => {
         </h1>
     </div>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

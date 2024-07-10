@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./modal.css";
 
-export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
+export const Movements = ({ isOpen, toggleModal, user, refreshUsers }) => {
   const admin = JSON.parse(localStorage.getItem("user"));
 
   const [formData, setFormData] = useState({
@@ -55,7 +55,7 @@ export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
 
     try {
       const response = await axios.put(
-        `http://127.0.0.1:4000/quetzalito/v1/user/updateUser/${user._id}`,
+        `http://127.0.0.1:4000/quetzalito/v1/user/updateUser/${formData.uid}`,
         formData
       );
       console.log("Response received:", response);
@@ -70,7 +70,7 @@ export const Modal = ({ isOpen, toggleModal, user, refreshUsers }) => {
   const handleDeleteUser = async () => {
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:4000/quetzalito/v1/user/${user._id}`
+        `http://127.0.0.1:4000/quetzalito/v1/user/${formData.uid}`
       );
       console.log("Response received:", response);
 

@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from 'react';
 import iconStore from "../../assets/img/iconStore.png";
 import IconUser from "../../assets/img/User.png"
+=======
+import iconStore from "../../assets/img/iconStore.png";
+>>>>>>> develop
 import IconTransaction from "../../assets/img/IconTransaction.png";
 import iconCredit from "../../assets/img/IconCredit.png";
 import iconFavorite from "../../assets/img/iconFavorite.png";
 import iconHome from "../../assets/img/IconHome.png";
+<<<<<<< HEAD
 import { NavLink } from "react-router-dom";
 
+=======
+import IconUser from "../../assets/img/User.png"
+
+import { NavLink } from "react-router-dom";
+import React, { useEffect, useState, useRef } from 'react';
+>>>>>>> develop
 
 /**Retorna el formulalio del las opciones de Usuario*/
 export const UserSidebar = () => {
@@ -62,7 +73,11 @@ export const UserSidebar = () => {
           onClick={() => handleClick(4)}
         >
           <img src={iconFavorite} alt="iconProductList" />
+<<<<<<< HEAD
           <NavLink to="/dashboard/products">Favorite</NavLink>
+=======
+          <NavLink to="/dashboard/favorite">Favorite</NavLink>
+>>>>>>> develop
         </li>
       </ul>
     </div>
@@ -70,6 +85,7 @@ export const UserSidebar = () => {
 };
 
 export const UserNavbar = () => {
+<<<<<<< HEAD
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const sidebarRef = useRef(null);
 
@@ -123,3 +139,58 @@ export const UserSidebarRight = () => {
         </div>
     );
 };
+=======
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarRef = useRef(null);
+
+  const toggleSidebar = () => {
+      setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleClickOutside = (event) =>{
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+          setIsSidebarOpen(false);
+      }
+  }
+
+  useEffect(() =>{
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>{
+          document.removeEventListener("mousedown", handleClickOutside);
+      }
+  }, []);
+
+  return (
+      <div className='navbar'>
+          <div className='navbar-logo'>
+              <img src='logo.png' alt='Banco El Quetzalito' />
+          </div>
+          <div className='user-icon' onClick={toggleSidebar}>
+              <img src={IconUser} alt='User Icon' />
+          </div>
+          <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+              <UserSidebarRight />
+          </div>
+          <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+              <UserSidebarRight />
+          </div>
+      </div>
+  );
+};
+
+export const UserSidebarRight = () => {
+  return (
+      <div className='input-sidebar-container'>
+{/*             <div className="sidebar-header">
+              <img src={Trist} alt="User Avatar" className="sidebar-avatar" />
+          </div> */}
+          <ul className="sidebar-menu">
+              <li>Account</li>
+              <li>Config</li>
+              <li>Help</li>
+              <li>Contact us</li>
+          </ul>
+      </div>
+  );
+};
+>>>>>>> develop
