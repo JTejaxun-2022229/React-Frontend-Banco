@@ -28,14 +28,11 @@ export const useTransferData = (emisorId) => {
     }, [emisorId]);
 
     useEffect(() => {
-        if (Array.isArray(transfered)) {
-            const filtered = transfered.filter(tr => tr.emisor === emisorId);
+        if (Array.isArray(transfered?.transfers)) {
+            const filtered = transfered.transfers.filter(tr => tr.emisor === emisorId);
             setFilteredTransfer(filtered);
         }
     }, [transfered, emisorId]);
-
-    //console.log('transfered', transfered);
-    //console.log('filteredTransfer', filteredTransfer);
 
     return {
         transfered,

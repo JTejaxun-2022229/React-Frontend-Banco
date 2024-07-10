@@ -2,8 +2,6 @@ import React from "react";
 import './Table.css';
 
 export const TransferTable = ({ transfer }) => {
-    //console.log('Table de transferencias:', transfer);
-
     const filteredTransfer = Array.isArray(transfer) ? transfer.filter(tr => tr.emisor === transfer) : [];
 
     const limitedTransfer = transfer.slice(0, 5);
