@@ -15,12 +15,14 @@ export const useUserDetails = () => {
 
   const logout = () => {
     logoutHandler();
+    setUserDetails(null)
   };
 
   return {
     isLogged: Boolean(userDetails),
     username: userDetails?.username ? userDetails.username : "Invalid", 
     role: userDetails?.role ? userDetails.role : "RoleInvalid",
+    account: userDetails?.account ? userDetails.account : "N/A",
     logout,
   };
 };
