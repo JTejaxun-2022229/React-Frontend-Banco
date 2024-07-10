@@ -375,6 +375,7 @@
     top: 15%;
     padding: 4%;
     display: flex;
+    justify-content: center;
     height: 85%;
     width: 100%;
   }

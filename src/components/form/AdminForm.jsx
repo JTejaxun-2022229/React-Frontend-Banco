@@ -5,8 +5,7 @@ import IconUSerList from "../../assets/img/IconUSerList.png"
 import IconCredit from "../../assets/img/IconCredit.png"
 import IconNewAdmin from "../../assets/img/iconNewAdmin.png"
 import IconProducts from "../../assets/img/IconProducts.png"
-
-
+import IconAcepCredit from "../../assets/img/IconListaCredit.png"
 
 export const AdminSidebar = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -53,6 +52,15 @@ export const AdminSidebar = () => {
           >
             <img src={IconProducts} alt="iconCreateAdmin" />
             <NavLink to="/dashboard/products">Products</NavLink>
+          </li>
+          <li
+            className={`button-sidebar-container ${
+              activeIndex === 4 ? "active" : ""
+            }`}
+            onClick={() => handleClick(4)}
+          >
+            <img src={IconAcepCredit} alt="iconAceptarCredit" />
+            <NavLink to="/dashboard/content">Credits</NavLink>
           </li>
         </ul>
       </div>

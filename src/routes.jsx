@@ -7,7 +7,8 @@ import { Modal } from "./components/manage/Modal";
 import { Products } from "./components/content/products/Products";
 import { AplicarCredit } from "./components/content/ApplyCredit/AplicarCredit";
 import { Home } from "./components/content/home/Home";
-
+import {CreditContainer} from "./components/content/AceptCredit/CreditContainer";
+import { AceptCredit } from "./components/content/AceptCredit/AceptCredit";
 const routes = [
     { path: '/', element: <AuthPage /> },
     { path: '/dashboard', element: <DashboardPage />, children: [
@@ -16,8 +17,11 @@ const routes = [
         { path: 'create-admin', element: <CreateAdmin /> },
         { path: 'products', element: <Products /> },
         { path: 'applyCredit', element: <AplicarCredit/> },
-        { path: 'home', element: <Home/>}
-    ]}
+        { path: 'home', element: <Home/>},
+        { path: '/dashboard/content', element: <CreditContainer/>, children: [
+            { path: 'accept-credit', element: <AceptCredit/>}
+        ]}
+    ]},
 ];
 
 export default routes;

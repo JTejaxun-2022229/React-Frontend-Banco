@@ -5,7 +5,7 @@ const apiClient = axios.create({
     timeout: 5000
 })
 
-apiClient.interceptors.request.use(
+/*apiClient.interceptors.request.use(
     (config) => {
         const userDetails = localStorage.getItem('token')
 
@@ -18,7 +18,7 @@ apiClient.interceptors.request.use(
     (e) => {
         return Promise.reject(e)
     }
-)
+)*/
 
 /* -----------------USUARIOS--------------------------*/
 export const login = async (data) => {
@@ -53,5 +53,25 @@ export const getUserEmail = async (email) => {
             e
 
         }
+    }
+}
+
+export const postCredit = async (data) =>{
+    try {
+        return await apiClient.post('/credit/requestCredit', data)
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const getCredit = async () =>{
+    try {
+        return await apiClient.get('/credit/credits')
+    } catch (e) {
+        error: true,
+        e
     }
 }

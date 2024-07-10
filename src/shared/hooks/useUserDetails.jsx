@@ -22,6 +22,7 @@ export const useUserDetails = () => {
     isLogged: Boolean(userDetails),
     username: userDetails?.username ? userDetails.username : "Invalid", 
     role: userDetails?.role ? userDetails.role : "RoleInvalid",
+    account: userDetails?.account ? userDetails.account : "N/A",
     logout,
   };
 };
