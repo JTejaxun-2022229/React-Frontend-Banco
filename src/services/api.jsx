@@ -2,7 +2,7 @@ import axios from "axios";
 import { logout } from "../shared/hooks";
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:4000/quetzalito/v1',
+    baseURL: 'http://127.0.0.1:4000/quetzalito/v1',
     timeout: 5000
 });
 
@@ -61,7 +61,7 @@ export const getUserEmail = async (email) => {
     }
 };
 
-export const getUserIdByAccount = async (accountNumber) => {
+/* export const getUserIdByAccount = async (accountNumber) => {
     try {
         const response = await apiClient.get(`/user/account/${accountNumber}`);
         return response.data.userId;
@@ -89,6 +89,18 @@ export const getTransfersByUser = async (userId) => {
         checkResponseStatus(e);
         console.error('Error fetching transfers', e);
         throw e;
+    }
+};
+ */
+
+export const postTransfer = async (data) => {
+    try {
+        return await apiClient.post('/transfer/addTransfer', data);
+    } catch (e) {
+        return {
+            error: true,
+            e,
+        };
     }
 };
 

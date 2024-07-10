@@ -10,6 +10,7 @@ export const Input = ({
     validationMessage,
     onBlurHandler,
     textarea,
+    disabled,
 }) => {
     const handleValueChange = (event) => {
         onChangeHandler(event.target.value, field)
@@ -39,6 +40,7 @@ export const Input = ({
                 value={value}
                 onChange={handleValueChange}
                 onBlur={handleInputBlur}
+                disabled={disabled}
             />
         )}
         <span className="auth-form-validations-message">

@@ -1,163 +1,129 @@
-import React, { useState } from 'react';
-import { Input } from "../../Input.jsx";
-import './transfer.css';
-import useUserAccount from '../../../shared/hooks/useUserAccount';
+import React, { useState } from "react";
+import { Input } from "../../Input"; // Asegúrate de que este componente existe
+import { useUserDetails } from "../../../shared/hooks";
+import { useApplyTransfer } from "../../../shared/hooks/useApplyTransfer";
+import "./transfer.css"; // Asegúrate de que este archivo exista
 
-export const Transfer = () => {
+const Transfer = () => {
+  const { username, account } = useUserDetails();
+  const { transfer, isLoading } = useApplyTransfer();
+
   const [formData, setFormData] = useState({
-    emisor: '',
-    receptor: '',
-    amount: '',
-    description: ''
+    emisorAccount: {
+      value: account,
+      isValid: true,
+      showError: false,
+    },
+    amount: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+    receptorAccount: {
+      value: "",
+      isValid: true,
+      showError: false,
+    },
+    description: {
+      value: "",
+      isValid: true,
+      showError: false,
+    },
   });
 
-  const [viewTransfers, setViewTransfers] = useState(false);
-  const [transfers, setTransfers] = useState([]);
-  const { fetchUserIdByAccount, transferFunds, fetchTransfers, error } = useUserAccount();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+  const handleInputValueChange = (value, field) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        value,
+      },
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log('Form data:', formData);
-      const emisorId = await fetchUserIdByAccount(formData.emisor);
-      const receptorId = await fetchUserIdByAccount(formData.receptor);
-
-      const transferData = {
-        emisor: emisorId,
-        amount: formData.amount,
-        receptor: receptorId,
-        description: formData.description
-      };
-
-      console.log('Transfer data:', transferData);
-      const response = await transferFunds(transferData);
-      console.log('Transfer response:', response);
-      setFormData({
-        emisor: '',
-        amount: '',
-        receptor: '',
-        description: ''
-      });
-    } catch (error) {
-      console.error('Error creating transfer', error);
+  const handleInputValidationOnBlur = (value, field) => {
+    let isValid = false;
+    switch (field) {
+      case "amount":
+        isValid = value > 0;
+        break;
+      default:
+        break;
     }
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        isValid,
+        showError: !isValid,
+      },
+    }));
   };
 
-  const handleViewTransfers = async () => {
-    setViewTransfers(!viewTransfers);
-    if (!viewTransfers) {
-      const userId = await fetchUserIdByAccount(formData.emisor);
-      const userTransfers = await fetchTransfers(userId);
-      if (Array.isArray(userTransfers)) {
-        setTransfers(userTransfers);
-      } else {
-        setTransfers([]);
-        console.error('Fetched transfers are not an array');
-      }
-    }
+  const handleTransfer = (event) => {
+    event.preventDefault();
+
+    transfer(
+      formData.emisorAccount.value,
+      formData.amount.value,
+      formData.receptorAccount.value,
+      formData.description.value
+    );
   };
+
+  const isSubmitButtonDisabled =
+    isLoading || !formData.amount.isValid;
 
   return (
-    <div className="main-content">
-      <div className="container">
-        <div className="button-switch-container">
-          <label className="toggle-switch">
-            <input type="checkbox" checked={viewTransfers} onChange={handleViewTransfers} />
-            <div className="toggle-switch-background">
-              <div className="toggle-switch-handle"></div>
-            </div>
-          </label>
+    <div className="content-background-container">
+      <div className="form-container">
+        <div className="form-container__title">
+          <h1>Transaction</h1>
         </div>
-        {!viewTransfers ? (
-          <>
-            <h1>Transaction</h1>
-            <form onSubmit={handleSubmit}>
-              <div className="input-group">
-                <label htmlFor="emisor">Number account</label>
-                <input
-                  type="text"
-                  id="emisor"
-                  name="emisor"
-                  placeholder="Numero de cuenta"
-                  value={formData.emisor}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="amount">Amount</label>
-                <input
-                  type="text"
-                  id="amount"
-                  name="amount"
-                  placeholder="Amount"
-                  value={formData.amount}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="receptor">Receptor</label>
-                <input
-                  type="text"
-                  id="receptor"
-                  name="receptor"
-                  placeholder="Receptor"
-                  value={formData.receptor}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  placeholder="Description"
-                  value={formData.description}
-                  onChange={handleChange}
-                />
-              </div>
-              <button type="submit" className="submit-button">Solicitar</button>
-            </form>
-            {error && <p className="error">{error}</p>}
-          </>
-        ) : (
-          <>
-            <h1>Transferencias</h1>
-            <table className="transfers-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Emisor</th>
-                  <th>Receptor</th>
-                  <th>Monto</th>
-                  <th>Descripción</th>
-                  <th>Fecha</th>
-                </tr>
-              </thead>
-              <tbody>
-                {transfers.map((transfer) => (
-                  <tr key={transfer.id}>
-                    <td>{transfer.id}</td>
-                    <td>{transfer.emisor}</td>
-                    <td>{transfer.receptor}</td>
-                    <td>{transfer.amount}</td>
-                    <td>{transfer.description}</td>
-                    <td>{new Date(transfer.date).toLocaleString()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </>
-        )}
+        <div className="form-container__form">
+          <Input
+            field="emisorAccount"
+            label={`Number account - ${username}`}
+            value={formData.emisorAccount.value}
+            onChangeHandler={handleInputValueChange}
+            onBlurHandler={handleInputValidationOnBlur}
+            type="text"
+            disabled={true}
+          />
+          <Input
+            field="amount"
+            label="Amount:"
+            value={formData.amount.value}
+            onChangeHandler={handleInputValueChange}
+            onBlurHandler={handleInputValidationOnBlur}
+            type="number"
+            showErrorMessage={formData.amount.showError}
+            validationMessage="The amount must be greater than 0"
+          />
+          <Input
+            field="receptorAccount"
+            label="Receptor:"
+            value={formData.receptorAccount.value}
+            onChangeHandler={handleInputValueChange}
+            onBlurHandler={handleInputValidationOnBlur}
+            type="text"
+          />
+          <Input
+            field="description"
+            label="Description:"
+            onChangeHandler={handleInputValueChange}
+            onBlurHandler={handleInputValidationOnBlur}
+            value={formData.description.value}
+            textarea
+          />
+          <button onClick={handleTransfer} disabled={isSubmitButtonDisabled}>
+            Solicitar
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
+export default Transfer;
