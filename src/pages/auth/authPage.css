@@ -1,0 +1,169 @@
+/* styles.css */
+
+.background-auth-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../assets/img/FondoPrincipalAuth.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.auth-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.auth-container {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0,0, .2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0;
+}
+
+@media (max-width: 500px) {
+   .auth-container{
+    width: 100%;
+   }
+ }
+
+.auth-logo-container {
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    background: transparent;
+    padding: 10px 0;
+}
+
+.auth-logo-container img {
+    height: 60px;
+}
+
+.title-form-login {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.auth-form-container {
+    display: flex;
+    padding: 10%;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.register-container {
+    height: 500px;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-form-label {
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: white;
+}
+
+.auth-form input {
+    width: 100%;
+    height: 35px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    color: white;
+    margin: 2%;
+    padding: 20px 45px 20px 20px;
+}
+
+.auth-form textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.auth-form button {
+    cursor: pointer;
+    background-color: #0b336b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 410px;
+    height: 40px;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: 0.3s;
+    line-height: 20px;
+}
+
+.auth-form button:hover {
+    opacity: 0.8;
+}
+
+.auth-form button:disabled {
+    opacity: 0.3;
+}
+
+.auth-form-switch-label {
+    color: #2b7df0;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.auth-form-switch-label:hover {
+    opacity: 0.8;
+}
+
+.auth-form-validations-message{
+    font-size: 15px;
+}
+/*Estilo del icono de login*/
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .Icon-View-Password {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+  }
