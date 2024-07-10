@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Input } from "../../Input";
-
 import "./benefit.css";
 
 export const CreateBenefit = () => {
-
+    
     const [formData, setFormData] = useState({
         nameBenefit: "",
         descriptionBenefit: "",

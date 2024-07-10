@@ -64,13 +64,12 @@ export const AdminSidebar = () => {
           onClick={() => handleClick(4)}
         >
           <img src={IconPurchase} alt="iconCreateAdmin" />
-          <NavLink to="/dashboard/create-benefit">Purchases</NavLink>
+          <NavLink to="/dashboard/purchases">Purchases</NavLink>
         </li>
       </ul>
     </div>
   );
 };
-
 
 export const AdminNavbar = () => {
 
