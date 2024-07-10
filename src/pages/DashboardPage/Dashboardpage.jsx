@@ -3,7 +3,6 @@ import { useUserDetails } from "../../shared/hooks";
 import { Sidebar } from "../../components/navbar/Sidebar";
 import { Outlet } from 'react-router-dom';
 import { Navbar } from "../../components/navbar/Navbar";
-import { UserSidebarRight } from "../"
 import "./dashboardpage.css";
 
 export const DashboardPage = () => {
