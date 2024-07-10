@@ -7,7 +7,7 @@ export const useAuthorisation = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const Authentication = async (creditId, status) => {
-    console.log(status)
+
     setIsLoading(true);
     try {
       const response = await postAuthenticationRequest({
@@ -35,3 +35,32 @@ export const useAuthorisation = () => {
     isLoading
   };
 };
+
+/**  try {
+    const Transfer = async (
+      emisorAccount,
+      amount,
+      receptorAccount,
+      description
+    ) => {
+      setIsLoading(true);
+
+      const response = await postTransferRequest({
+        emisorAccount,
+        amount,
+        receptorAccount,
+        description,
+      });
+
+      setIsLoading(false);
+      if (response.error) {
+        return toast.error(
+          response.e?.response?.data || "Error creating transfer"
+        );
+      }
+
+      toast.success("Transfer created successfully");
+    };
+  } catch (error) {
+    toast.error("Error al enviar");
+  }; */
