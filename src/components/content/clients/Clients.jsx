@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  TableSortLabel,
 } from "@mui/material";
 import axios from "axios";
 import { EditOutlined } from "@mui/icons-material";
@@ -18,13 +19,17 @@ export const Clients = () => {
   const [userList, setUserList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [sortOrder, setSortOrder] = useState("desc");
+  const [movements, setMovements] = useState([]);
+  const [isMovementsOpen, setIsMovementsOpen] = useState(false);
 
   const toggleModal = () => setIsOpen(!isOpen);
+  const toggleMovementsModal = () => setIsMovementsOpen(!isMovementsOpen);
 
   const getUsers = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:4000/quetzalito/v1/user"
+        `http://127.0.0.1:4000/quetzalito/v1/user/orderByMovements?sort=${sortOrder}`
       );
       console.log(response, "response completa");
       console.log(response.data, "response.data");
@@ -42,16 +47,34 @@ export const Clients = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [sortOrder]);
 
   const handleEditClick = (user) => {
     setSelectedUser(user);
     toggleModal();
   };
 
+  const handleSortClick = () => {
+    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+  };
+
+  const getMovements = async (userId) => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:4000/quetzalito/v1/user/getMovements/${userId}`);
+      setMovements(response.data.movements);
+    } catch (error) {
+      console.error("Error fetching movements data:", error);
+    }
+  };
+
+  const handleMovementsClick = async (user) => {
+    await getMovements(user._id);
+    toggleMovementsModal();
+  };
+
   return (
     <div className="Tabla">
-      <TableContainer component={Paper} elevation={2}>
+      <TableContainer component={Paper} elevation={2} className="TableContainer">
         <Table>
           <TableHead>
             <TableRow>
@@ -62,6 +85,15 @@ export const Clients = () => {
               <TableCell>Work Place</TableCell>
               <TableCell>Salary</TableCell>
               <TableCell>Balance</TableCell>
+              <TableCell sortDirection={sortOrder}>
+                <TableSortLabel
+                  active={true}
+                  direction={sortOrder}
+                  onClick={handleSortClick}
+                >
+                  Movements
+                </TableSortLabel>
+              </TableCell>
               <TableCell>Manage</TableCell>
             </TableRow>
           </TableHead>
@@ -76,6 +108,15 @@ export const Clients = () => {
                   <TableCell>{user.workPlace}</TableCell>
                   <TableCell>{user.salary}</TableCell>
                   <TableCell>{user.balance}</TableCell>
+                  <TableCell>
+                    <IconButton
+                      onClick={() => handleMovementsClick(user)}
+                      size="small"
+                      color="primary"
+                    >
+                      {user.totalCount}
+                    </IconButton>
+                  </TableCell>
                   <TableCell>
                     <IconButton
                       onClick={() => handleEditClick(user)}
@@ -96,7 +137,33 @@ export const Clients = () => {
         user={selectedUser}
         refreshUsers={getUsers}
       />
+      <MovementsModal
+        isOpen={isMovementsOpen}
+        toggleModal={toggleMovementsModal}
+        movements={movements}
+      />
     </div>
   );
 };
+
+
+const MovementsModal = ({ isOpen, toggleModal, movements }) => (
+  <div className={`modal-2-overlay ${isOpen ? "open" : ""}`} onClick={toggleModal}>
+    <div className="modal-2-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-2-content">
+        <span className="modal-2-close" onClick={toggleModal}>
+          &times;
+        </span>
+        <h3>Últimos 5 Movimientos</h3>
+        <ul>
+          {movements.map((movement, index) => (
+            <li key={index}>
+              {movement.type}: {movement.amount} (Fecha: {new Date(movement.date).toLocaleDateString()})
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+);
 
