@@ -15,7 +15,7 @@ const Name = ({ name }) => {
     return (
         <div className="name-container">
             <h1>Welcome!</h1>
-            <h3>{name}</h3>
+            <h3>Admin</h3>
         </div>
     );
 }

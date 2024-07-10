@@ -29,6 +29,18 @@ export const CreateClient = () => {
         e.preventDefault();
         console.log("Sending data:", clientData);
 
+        for (const key in clientData) {
+            if (clientData[key] === '') {
+                toast.error(`The ${key} field is required`);
+                return;
+            }
+        }
+
+        if (parseFloat(clientData.salary) < 100) {
+            toast.error("Salary must be greater than 100");
+            return;
+        }
+
         try {
             const response = await axios.post(
                 `http://localhost:4000/quetzalito/v1/user/register`,
@@ -39,11 +51,11 @@ export const CreateClient = () => {
                     }
                 }
             );
-            toast.success("Cliente agregado exitosamente");
+            toast.success("Client added successfully");
             console.log("Response received:", response);
         } catch (error) {
-            toast.error("Error al registrar el cliente");
-            console.error("Error al registrar el usuario:", error);
+            toast.error("Error registering the client");
+            console.error("Error registering the user:", error);
         }
     };
 
@@ -62,6 +74,7 @@ export const CreateClient = () => {
                                 name={key}
                                 value={clientData[key]}
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     ))}
