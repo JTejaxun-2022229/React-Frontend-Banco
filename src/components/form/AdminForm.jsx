@@ -114,9 +114,6 @@ export const AdminNavbar = () => {
 export const AdminSidebarRight = () => {
   return (
     <div className='input-sidebar-container'>
-      {/*             <div className="sidebar-header">
-                <img src={Trist} alt="User Avatar" className="sidebar-avatar" />
-            </div> */}
       <ul className="sidebar-menu">
         <li>Account</li>
         <li>Config</li>

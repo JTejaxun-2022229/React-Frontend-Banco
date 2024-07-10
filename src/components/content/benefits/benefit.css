@@ -44,10 +44,24 @@
     color: black;
 }
 
+.buy-button {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+.buy-button:hover {
+    background-color: #444;
+}
 
 .form-container {
     background-color: #d3d3d3;
-    /* Slightly darker grey background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
