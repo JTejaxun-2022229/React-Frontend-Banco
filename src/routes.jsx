@@ -6,7 +6,7 @@ import { CreateAdmin } from "./components/createAdmin/CreateAdmin";
 import { Modal } from "./components/manage/Modal";
 import { Products } from "./components/products/Products";
 import { AplicarCredit } from "./components/content/ApplyCredit/AplicarCredit";
-import Transfer from "./components/content/transfer/Transfer"; // Asegúrate de que esta ruta es correcta
+import { Transfer } from "./components/content/transfer/Transfer";
 
 const routes = [
     { path: '/', element: <AuthPage /> },
@@ -14,7 +14,7 @@ const routes = [
         { path: 'clients', element: <Clients /> },
         { path: 'create-client', element: <Modal /> },
         { path: 'applyCredit', element: <AplicarCredit /> },
-        { path: 'transfer', element: <Transfer /> }, // Agrega esta línea para la ruta de transferencia
+        { path: 'transfer', element: <Transfer /> }, 
         { path: 'create-admin', element: <CreateAdmin /> },
         { path: 'products', element: <Products /> }
     ]}

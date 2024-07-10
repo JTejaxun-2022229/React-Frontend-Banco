@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Input } from "../../Input"; // Asegúrate de que este componente existe
+import { Input } from "../../Input";
 import { useUserDetails } from "../../../shared/hooks";
 import { useApplyTransfer } from "../../../shared/hooks/useApplyTransfer";
-import "./transfer.css"; // Asegúrate de que este archivo exista
+import "./transfer.css";
 
-const Transfer = () => {
+
+
+export const Transfer = () => {
   const { username, account } = useUserDetails();
   const { transfer, isLoading } = useApplyTransfer();
-
   const [formData, setFormData] = useState({
     emisorAccount: {
       value: account,
@@ -76,7 +77,7 @@ const Transfer = () => {
     isLoading || !formData.amount.isValid;
 
   return (
-    <div className="content-background-container">
+    <div className="Content__background-container">
       <div className="form-container">
         <div className="form-container__title">
           <h1>Transaction</h1>
@@ -126,4 +127,3 @@ const Transfer = () => {
   );
 };
 
-export default Transfer;
